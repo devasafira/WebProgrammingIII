@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500;600&display=swap');
+
+:root{
+    --font-poppins: 'Poppins', sans-serif;
+    --font-roboto-slab: 'Roboto Slab', serif;
+    --font-oswald: 'Oswald', sans-serif;
+    --font-color-orange: #df5518;
+    --font-color-black: #000000;
+    --font-color-white: #FFFFFF;
+    --font-color-dark: #202920;
+}
+
+html::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    height: 1rem;
+    background: rgba(32,41,32, .4);
+    border-radius: 5px;
+    opacity: 0;
+}
+
+::-webkit-scrollbar-track{
+    border-radius: 5px;
+    margin-block: 0.3rem;
+    background: transparent;
+}
+
+.poppins{
+    font-family: var(--font-poppins);
+}
+
+.roboto-slab{
+    font-family: var(--font-roboto-slab);
+}
+
+.oswald{
+    font-family: var(--font-oswald);
+}
+
+.image{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-32.jpg), rgba(0, 0, 0, 0.30);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+.patternSushi{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-31.png);
+    background-repeat: repeat;
+}
+
+.sushiParallax{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-02.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.upright{
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.parallax-container{
+    transform: translateY(0);
+    transition: transform 2s linear;
+}
+
+.sushi-parallax{
+    transform: translateY(0);
+    transition: transform 2s linear;
+}
+
+
