@@ -9,12 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/Global.css">
 </head>
-<body class="overflow-x-hidden">
-    <?php include 'Navbar.php' ?>
+<body class="overflow-hidden">
 
-    <?= $this->renderSection('content') ; ?>
+    <div class="">
+        <?= $this->renderSection('content') ; ?>
+    </div>
 
-    <?php include 'Footer.php' ?>
+    
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500;600&display=swap');
 
 :root{
     --font-poppins: 'Poppins', sans-serif;
@@ -37,6 +37,13 @@ html::-webkit-scrollbar-thumb{
     font-family: var(--font-roboto-slab);
 }
 
+.text-shadow{
+    text-shadow:
+    3px -2px 5px black,
+    0 0 1em black,
+    0 0 3em black;
+}
+
 .oswald{
     font-family: var(--font-oswald);
 }
@@ -46,10 +53,34 @@ html::-webkit-scrollbar-thumb{
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: darken;
+    background-position: center;
+}
+
+.salmon-sushi{
+    background: url(https://ichibansushi.co.id/wp-content/uploads/2023/07/SALMON-SUSHI.jpg);
+    background-size: 110%;
+    background-position: center;
+}
+
+.tobiko-sushi{
+    background: url(https://ichibansushi.co.id/wp-content/uploads/2023/06/TOBIKO-SUSHI.jpg);
+    background-size: 110%;
+    background-position: center;
+    
+}
+
+.kanji-icon{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-brush.png);
+    background-repeat: no-repeat;
 }
 
 .patternSushi{
     background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-31.png);
+    background-repeat: repeat;
+}
+
+.patternSushiBlack{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-background-pattern-black.png);
     background-repeat: repeat;
 }
 
@@ -64,14 +95,38 @@ html::-webkit-scrollbar-thumb{
     text-orientation: upright;
 }
 
+.polygon{
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+}
+
+.rotate{
+    background: url(https://ali.sandbox.etdevs.com/divi/wp-content/uploads/sites/2/2020/07/sushi-37.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .parallax-container{
     transform: translateY(0);
-    transition: transform 2s linear;
+    transition: transform 0.3s linear;
 }
 
 .sushi-parallax{
     transform: translateY(0);
-    transition: transform 2s linear;
+    transition: transform 0.3s linear;
 }
+
+/* Admin Sidebar */
+
+.list.active, .list:hover{
+    background: white;
+    color:rgb(17 24 39);
+    font-weight: 500;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+
+
 
 
