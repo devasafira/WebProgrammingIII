@@ -12,6 +12,16 @@ class MenuModel extends Model
         return $this->db->findAll('menu');
     }
 
+    public function countMenu()
+    {
+        return $this->countAll();
+    }
+
+    public function sumTotalStok()
+    {
+        return $this->selectSum('stok')->get()->getRow()->stok;
+    }
+
     public function simpanData($data = null)
     {
         $this->db->insert('menu', $data);

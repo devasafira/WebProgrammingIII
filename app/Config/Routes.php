@@ -24,4 +24,11 @@ $routes->delete('/deleteMenu/(:num)', 'MenuController::delete/$1');
 $routes->get('/editMenu/(:num)', 'MenuController::edit/$1');
 $routes->post('/updateMenu/(:num)', 'MenuController::updateMenu/$1');
 
+// qrcode 
+$routes->group('tableAuth', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('generate-qr-code', 'TableAuth::generateQRCode');
+    $routes->post('verify-qr-code', 'TableAuth::verifyQRCode');
+});
+
+
 

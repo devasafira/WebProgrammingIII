@@ -10,7 +10,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Jumlah Menu</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalMenu; ?></p>
             </div>
         </div>
 
@@ -18,7 +18,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Jumlah Kategori</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalKategori ?></p>
             </div>
         </div>
 
