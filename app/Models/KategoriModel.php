@@ -4,30 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TableModel extends Model
+class KategoriModel extends Model
 {
 
-    // Tambahkan fungsi untuk menyimpan token QR Code
-    public function saveQRCodeToken($userId, $token)
+    public function countKategori()
     {
-        $this->where('id', $userId)->set(['qr_code_token' => $token])->update();
+        return $this->countAll();
     }
 
-    // Tambahkan fungsi untuk mendapatkan token QR Code
-    public function getQRCodeToken($userId)
-    {
-        return $this->where('id', $userId)->get()->getRow('qr_code_token');
-    }
-
-
-
-    protected $table            = 'table';
+    protected $table            = 'kategoris';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['table_number', 'password', 'status'];
+    protected $allowedFields    = ['kategori'];
 
     // Dates
     protected $useTimestamps = false;

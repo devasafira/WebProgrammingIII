@@ -31,18 +31,7 @@ class Table extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '20',
             ],
-            'createDate' => [
-                'type' => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            ],
-            'isActive' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ],
-            'isLogin' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ]
+            
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('table');
