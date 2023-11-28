@@ -30,5 +30,8 @@ $routes->group('tableAuth', ['namespace' => 'App\Controllers'], function($routes
     $routes->post('verify-qr-code', 'TableAuth::verifyQRCode');
 });
 
+//user
+$routes->get('/pilihMeja', 'TableController::pilihmeja');
+
 
 
