@@ -21,11 +21,11 @@ class Kategori extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('kategori');
+        $this->forge->createTable('kategoris');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kategori');
+        $this->forge->dropTable('kategoris');
     }
 }

@@ -20,12 +20,22 @@ class TableController extends BaseController
 
     public function index()
     {
-        // if (!session('isLoggedIn')) {
-        //     return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
-        // }
-        
         $data['tables'] = $this->TableModel->findAll();
 
         return view('Admin/tablePage', $data);
+    }
+
+    public function pilihMeja()
+    {
+        // Menggunakan property $this->TableModel yang sudah diinisialisasi di constructor
+        $inactiveTables = $this->TableModel->where('status', 'inactive')->findAll();
+
+        if (empty($inactiveTables)) {
+            $data['message'] = 'Meja Penuh'; // Set message when no inactive tables available
+        } else {
+            $data['tables'] = $inactiveTables;
+        }
+
+        return view('User/Table/PilihMeja', $data);
     }
 }

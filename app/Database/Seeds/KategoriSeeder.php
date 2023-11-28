@@ -30,6 +30,6 @@ class KategoriSeeder extends Seeder
 
         ];
 
-        $this->db->table('kategori')->insertBatch($data);
+        $this->db->table('kategoris')->insertBatch($data);
     }
 }

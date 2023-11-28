@@ -4,42 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MenuModel extends Model
+class KategoriModel extends Model
 {
 
-    public function getMenu()
-    {
-        return $this->db->findAll('menu');
-    }
-
-    public function countMenu()
+    public function countKategori()
     {
         return $this->countAll();
     }
 
-    public function sumTotalStok()
-    {
-        return $this->selectSum('stok')->get()->getRow()->stok;
-    }
-
-    public function simpanData($data = null)
-    {
-        $this->db->insert('menu', $data);
-    }
-
-    public function deleteData($id)
-    {
-        return $this->where('id', $id)->delete();
-    }
-
-
-    protected $table            = 'menu';
+    protected $table            = 'kategoris';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_menu', 'kategori', 'harga', 'stok', 'gambar'];
+    protected $allowedFields    = ['kategori'];
 
     // Dates
     protected $useTimestamps = false;

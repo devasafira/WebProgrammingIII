@@ -6,6 +6,38 @@ use CodeIgniter\Model;
 
 class TableModel extends Model
 {
+    public function getActiveTables()
+    {
+        return $this->where('status', 'active')->findAll();
+    }
+
+    public function getInactiveTables()
+    {
+        return $this->where('status', 'inactive')->findAll();
+    }
+
+    public function activateTable($tableNumber)
+    {
+        try {
+            $this->where('table_number', $tableNumber)->set(['status' => 'active'])->update();
+            return true;
+        } catch (\Exception $e) {
+            // Handle the error, log it, or return false based on your application's needs.
+            return false;
+        }
+    }
+
+    public function deactivateTable($tableNumber)
+    {
+        try {
+            $this->where('table_number', $tableNumber)->set(['status' => 'inactive'])->update();
+            return true;
+        } catch (\Exception $e) {
+            // Handle the error, log it, or return false based on your application's needs.
+            return false;
+        }
+    }
+
     protected $table            = 'table';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
@@ -14,20 +46,17 @@ class TableModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['table_number', 'password', 'status'];
 
-    // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true; // Gunakan timestamp
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        // Tentukan aturan validasi jika diperlukan
+        // Misalnya, 'table_number' harus unique, dst.
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
-    // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert   = [];
     protected $afterInsert    = [];

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminModel;
+use App\Models\KategoriModel;
 use App\Models\MenuModel;
 
 class MenuController extends BaseController
@@ -12,15 +13,15 @@ class MenuController extends BaseController
     {
         $this->AdminModel = new AdminModel();
         $this->MenuModel = new MenuModel();
+        $this->KategoriModel = new KategoriModel();
     }
 
     public function index()
     {
-        // if (!session('isLoggedIn')) {
-        //     return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
-        // }
-
+        
         $data['menus'] = $this->MenuModel->findAll();
+        $data['totalMenu'] = $this->MenuModel->countMenu();
+        $data['totalKategori'] = $this->KategoriModel->countKategori();
 
         return view('Admin/Menu/menuPage', $data);
     }

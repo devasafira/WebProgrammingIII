@@ -1,0 +1,382 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #1d232b;
+    overflow-x: hidden;
+}
+
+/* Start Sidebar CSS */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100px;
+    background-color: #12171e; 
+    transform: all 0.5s ease;
+    
+}
+.logo{
+    /* text-align: center;
+    font-size: 35px;
+    margin: 30px 0 0 0;
+    position: absolute;
+    left: 0; */
+
+    width: 60px;
+    height: auto;
+    margin: 20px 10px 0 10px;
+}
+.logo-title{
+    font-weight: 700;
+    font-size: 17px;
+    color: #23832f;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    cursor: default;
+}
+.sidebar ul, .sidebar ul li{
+    list-style-type: none;
+    height: 50px;
+    font-size: 27px;
+    margin: 40px 0 0 2px;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+.sidebar ul{
+    margin-top: 4rem;
+}
+.menu-link{
+    color: #23832f;
+}
+.menu-link:hover{
+    color:#41ed58;
+}
+.menu-link.active{
+    color:#41ed58;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+/* End Sidebar CSS */
+
+/* Start Content Admin CSS */
+#content{
+    width: 93%;
+    height: auto;
+    margin-left: 100px;
+    color: aliceblue;  
+}
+.top-pesan{
+    background: #1d232b;
+    width: 93%;
+    position: fixed;
+    top: 0;
+}
+.top-pesan p{
+  background: #12171e;
+  padding: 8px;
+  text-align: center;
+  margin: 1rem 2rem 1rem 2rem;
+  border-radius: 10px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  display: block;
+}
+.table-pesan{
+  text-align: center;
+  width: 95.5%;
+  height: auto;
+  background: #12171e;
+  display: flex;
+  margin: 1rem 0 0 2rem;
+  border-radius: 15px;
+  padding: 15px;
+}
+.table-MenuTable{
+  text-align: center;
+  width: 95.5%;
+  height: auto;
+  background: #12171e;
+  display: flex;
+  margin: 10rem 0 0 2rem;
+  border-radius: 15px;
+  padding: 15px;
+}
+.table tr, .table td{
+    color: white;
+}
+.add-btn{
+  background: #1d232b;
+  width: 93%;
+  position: fixed;
+  top: 10%;
+}
+.btn-add{
+  display: flex;
+  float: right;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: #12171e;
+  padding: 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bolder;
+  margin: 1rem 2rem 1rem 1rem;
+}
+.btn-add:hover{
+  color: #23832f;
+  border: 2px solid #23832f;
+  transition: all ease-in 0.2s;
+}
+
+/* End Content CSS */
+
+
+/* Start Login and Register CSS */
+
+/* login css */
+.box{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+}
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border: 3px solid rgb(63, 141, 63);  
+  border-radius: 10px;
+} 
+.center h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #529e49;
+}
+.center form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .text-field{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.text-field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.text-field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+.text-field .span1::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: #529e49;
+  transition: 0.5s;
+}
+.text-field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #529e49;
+  transition: 0.5s;
+}
+.text-field input:focus ~ label,
+.text-field input:valid ~ label{
+  top: -5px;
+  color: #529e49;
+  transition: 0.10s;
+  font-size: 12px;
+  font-weight: bold;
+}
+.text-field input:focus ~ span::before,
+.text-field input:valid ~ span::before{
+  width: 100%;
+}
+input[type="submit"]{
+  width: 100%;
+  height: 45px;
+  background: #529e49;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: whitesmoke;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s; 
+}
+input[type="submit"]:hover{
+  background: #7ab973;
+  transform: scale(1.05); 
+}
+.login{
+  font-size: 16px;
+  margin: 25px 0 20px 0;
+  text-align: center;
+}
+.login a{
+  font-weight: bold;
+  margin-left: 3px;
+  transition: .2s;
+  color: #529e49;
+}
+.login a:hover{
+  color: #75b96e;
+}
+.addmenu-table{
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+}
+.addmenu-table:hover{
+  color: #23832f;
+  transition: all ease-in-out 0.3s;
+}
+/* End Login and Register CSS */
+
+/* user start */
+
+/* Bagian Ubayar Start */
+#userHome{
+  width: 86%;
+  height: auto;
+  color: aliceblue;
+  margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  /* float: right;
+  background: #1d232b;
+  color: white;
+  text-decoration: none;
+  list-style-type: none; */
+} 
+
+.payTable{
+  height: 550px;
+  text-align: center;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  position: relative;
+  background: #12171e;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user-row img{
+  width: 20%;
+  border-radius: 10px;
+}
+
+.noTable{
+  text-align: center;
+  background: #1d232b;
+  width: 101.5%;
+  display: flex;
+}
+
+.textTable{
+  background: #12171e;
+  padding: 8px;
+  text-align: center;
+  margin: 2rem 0 1.5rem 0;
+  height: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+}
+
+#userHome ul li{
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
+}
+
+.totalTable{
+  margin: 20px 0 20px 0;
+  padding: 5px;
+  width: 102%;
+  background: #12171e;
+  border-radius: 8px;
+}
+
+.tombol{
+  text-align: center;
+  margin-bottom: 5px;
+}
+/* Bagian Ubayar End */
+
+
+/* Bagian Uboard Start */
+
+#userHomeDashboard{
+  margin-left: 100px;
+  color: white;
+  padding: 40px 0;
+}
+.top-userhome{
+  margin: 1rem;
+}
+.title-box{
+  background:#12171e;
+  padding: 5px;
+  margin: 1rem;
+}
+
+/* .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+} */
+
+/* Bagian Uboard End */
+/* user end */
