@@ -202,151 +202,145 @@ body{
         <?php endforeach; ?>
         <?php endif;?>
 
-        
-
+        <?php if (!empty($apetizerMenus)):?>
+        <?php foreach ($apetizerMenus as $menu) : ?>
         <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="SAKURA-KANI-MAYO-SUSHI.jpg">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Sakura Kani Mayo Sushi</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP.10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                </div>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
+        <?php if (!empty($ramenMenus)):?>
+        <?php foreach ($ramenMenus as $menu) : ?>
         <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="EBI-SUSHI.jpg">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Ebi Sushi</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP.10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                </div>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
+        <?php if (!empty($desertMenus)):?>
+        <?php foreach ($desertMenus as $menu) : ?>
         <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="ROASTED-SALMON.jpg">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Roasted Salmon</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP.10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                </div>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
-        <div class="drink-items menu_card minuman" data-category="minuman">
-            <img src="LYCHEE-TEA.jpg">
+        <?php if (!empty($rollMenus)):?>
+        <?php foreach ($rollMenus as $menu) : ?>
+        <div class="food-items menu_card makanan" data-category="makanan">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Lychee Tea</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP.10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                </div>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
-        <div class="drink-items menu_card minuman" data-category="minuman">
-            <img src="LEMON-TEA.jpg">
+        <?php if (!empty($drinksMenus)):?>
+        <?php foreach ($drinksMenus as $menu) : ?>
+        <div class="food-items menu_card makanan" data-category="makanan">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Lemon Tea</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP.10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="drink-items menu_card" data-category="minuman">
-            <img src="HOKKAIDO-MATCHA-MACCHIATO.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Hokkaido Matcha Macchiato</h5>
                 </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
-
-        <div class="drink-items menu_card minuman" data-category="minuman">
-            <img src="HOKKAIDO-MILK-TEA.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Hokkaido Milk Tea</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="drink-items menu_card minuman" data-category="minuman">
-            <img src="HOKKAIDO-TARO-MACCHIATO.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Hakkoido Taro Macchiato</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="drink-items menu_card minuman" data-category="minuman">
-            <img src="BLUE-OCEAN-MOJITO.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Blue Ocean Mojito</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>  
-            </div>
-        </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
         <script>
             function increment(element) {

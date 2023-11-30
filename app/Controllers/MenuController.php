@@ -151,9 +151,9 @@ class MenuController extends BaseController
         // Ambil data menu berdasarkan kategori
         $data['appetizerMenus'] = $MenuModel->where('kategori', 'Appertizer')->findAll();
         $data['sushiMenus'] = $MenuModel->where('kategori', 'Nigiri Sushi')->findAll();
-        $data['ramenMenus'] = $MenuModel->where('kategori', 'Shusi Roll')->findAll();
-        $data['Ramen'] = $MenuModel->where('kategori', 'Udon')->findAll();
-        $data['desertMenus'] = $MenuModel->where('kategori', 'Desert')->findAll();
+        $data['rollMenus'] = $MenuModel->where('kategori', 'Shusi Roll')->findAll();
+        $data['ramenMenus'] = $MenuModel->where('kategori', 'Ramen')->findAll();
+        $data['desertMenus'] = $MenuModel->where('kategori', 'Dessert')->findAll();
         $data['drinksMenus'] = $MenuModel->where('kategori', 'Drinks')->findAll();
 
         return view('Menu/menu', $data);

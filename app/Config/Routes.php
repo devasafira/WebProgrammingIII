@@ -36,7 +36,7 @@ $routes->post('/pilihmeja', 'TableController::placeOrder');
 
 // pilihmenu
 // $routes->get('/pilihmenu', 'User::menu');
-$routes->get('/pilihmenu', 'MenuController::tesmenu');
+$routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
 
 
