@@ -168,85 +168,41 @@ body{
                 
             </div>
         </div>
+        <?php if (empty($sushiMenus) && empty($minuman)) : ?>
+            <div class="text-center">
+                <h2>Tidak ada menu yang tersedia</h2>
+            </div>
+        <?php endif; ?>
+        
+        <?php if (!empty($sushiMenus)):?>
+        <?php foreach ($sushiMenus as $menu) : ?>
         <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="MAGURO-SUSHI.jpg">
+        <img src="<?= base_url('uploads/' . $menu['gambar']); ?>" class="card-img-top" alt="Menu Image">
             <div class="details">
                 <div class="details-sub">
-                    <h5>Maguro Sushi</h5>
+                    <h5><?= $menu ['nama_menu'];?></h5>
                 </div>
-                <p>RP. 10.000</p>
+                <p><?= $menu['harga']; ?></p>
                 <div class="wrapper">
                     <span class="minus" onclick="decrement(this)">-</span>
                     <span class="num">1</span>
                     <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
+                </div>
+                <form action="/pesan" method="post">
+                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" type="submit" name="submit">Pesan</button>
+                            <input type="number" class="form-control" name="quantity" min="0" max="<?= $menu['stok']; ?>">
+                        </div>
+                </form>
+                <span class="badge bg-info text-dark"><?= $menu['stok']; ?> tersisa</span>
+                <span class="badge bg-info text-dark"><?= $menu['harga']; ?> harga</span>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif;?>
 
-        <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="SALMON-SUSHI.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Salmon Sushi</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="TAMAGO-SUSHI.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Tamago Sushi</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="food-items menu_card makanan" data-category="makanan">
-            <img src="TOBIKO-SUSHI.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Tobiko Sushi</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
-
-        <div class="food-items menu_card makanan data-category="makanan">
-            <img src="KANI-SUSHI.jpg">
-            <div class="details">
-                <div class="details-sub">
-                    <h5>Kani Sushi</h5>
-                </div>
-                <p>RP.10.000</p>
-                <div class="wrapper">
-                    <span class="minus" onclick="decrement(this)">-</span>
-                    <span class="num">1</span>
-                    <span class="plus" onclick="increment(this)">+</span>
-                  </div>
-                  <a href="#" class="tmbl_menu">Pesan Sekarang</a>
-            </div>
-        </div>
+        
 
         <div class="food-items menu_card makanan" data-category="makanan">
             <img src="SAKURA-KANI-MAYO-SUSHI.jpg">

@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\AdminModel;
 use App\Models\KategoriModel;
 use App\Models\MenuModel;
+use PhpParser\Node\Expr\New_;
 
 class MenuController extends BaseController
 {
@@ -145,5 +146,16 @@ class MenuController extends BaseController
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan menu
         return redirect()->to('/menuAdmin')->with('success', 'Menu berhasil diupdate.');
     }
+    public function pilihmenu (){
+        $MenuModel = new MenuModel();
+        // Ambil data menu berdasarkan kategori
+        $data['appetizerMenus'] = $MenuModel->where('kategori', 'Appertizer')->findAll();
+        $data['sushiMenus'] = $MenuModel->where('kategori', 'Nigiri Sushi')->findAll();
+        $data['ramenMenus'] = $MenuModel->where('kategori', 'Shusi Roll')->findAll();
+        $data['Ramen'] = $MenuModel->where('kategori', 'Udon')->findAll();
+        $data['desertMenus'] = $MenuModel->where('kategori', 'Desert')->findAll();
+        $data['drinksMenus'] = $MenuModel->where('kategori', 'Drinks')->findAll();
 
+        return view('Menu/menu', $data);
+    }
 }

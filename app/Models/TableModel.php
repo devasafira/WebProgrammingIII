@@ -13,7 +13,7 @@ class TableModel extends Model
 
     public function getInactiveTables()
     {
-        return $this->where('status', 'inactive')->findAll();
+        return $this->where('status', 'Tidak Aktif')->findAll();
     }
 
     public function activateTable($tableNumber)
@@ -30,7 +30,7 @@ class TableModel extends Model
     public function deactivateTable($tableNumber)
     {
         try {
-            $this->where('table_number', $tableNumber)->set(['status' => 'inactive'])->update();
+            $this->where('table_number', $tableNumber)->set(['status' => 'Tidak Aktif'])->update();
             return true;
         } catch (\Exception $e) {
             // Handle the error, log it, or return false based on your application's needs.
@@ -46,12 +46,13 @@ class TableModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['table_number', 'password', 'status'];
 
-    protected $useTimestamps = true; // Gunakan timestamp
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
 
     protected $validationRules      = [
-        // Tentukan aturan validasi jika diperlukan
-        // Misalnya, 'table_number' harus unique, dst.
+        // Aturan validasi jika diperlukan, misalnya:
+        'table_number' => 'required|is_unique[table.table_number]',
+        'password'     => 'required|min_length[6]',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

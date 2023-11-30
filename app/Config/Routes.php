@@ -32,6 +32,12 @@ $routes->group('tableAuth', ['namespace' => 'App\Controllers'], function($routes
 
 //user
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
+$routes->post('/pilihmeja', 'TableController::placeOrder');
+
+// pilihmenu
+// $routes->get('/pilihmenu', 'User::menu');
+$routes->get('/pilihmenu', 'MenuController::tesmenu');
+$routes->get('/pesan', 'MenuController::tesmenu');
 
 
-
+ 

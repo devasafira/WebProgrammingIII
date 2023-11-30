@@ -3,18 +3,12 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AdminModel;
-use App\Models\MenuModel;
-use App\Models\PesananModel;
 use App\Models\TableModel;
 
 class TableController extends BaseController
 {
     public function __construct()
     {
-        $this->AdminModel = new AdminModel();
-        $this->MenuModel = new MenuModel();
-        $this->PesananModel = new PesananModel();
         $this->TableModel = new TableModel();
     }
 
@@ -27,15 +21,30 @@ class TableController extends BaseController
 
     public function pilihMeja()
     {
-        // Menggunakan property $this->TableModel yang sudah diinisialisasi di constructor
-        $inactiveTables = $this->TableModel->where('status', 'inactive')->findAll();
+        $inactiveTables = $this->TableModel->where('status', 'Tidak Aktif')->findAll();
 
         if (empty($inactiveTables)) {
-            $data['message'] = 'Meja Penuh'; // Set message when no inactive tables available
+            $data['message'] = 'Meja Penuh';
         } else {
             $data['tables'] = $inactiveTables;
         }
 
         return view('User/Table/PilihMeja', $data);
     }
+
+    public function placeOrder()
+    {
+        $tableNumber = $this->request->getPost('table_number');
+        $namaPembeli = $this->request->getPost('nama_pembeli');
+        $tableModel = new ModelTable();
+        $tableModel->activateTable($tableNumber);
+
+        $session = session();
+        $session->set([
+            'nama_pembeli' => $namaPembeli,
+            'table_number' => $tableNumber
+        ]);
+        return redirect()->to('/pilihmenu');
+    }
+
 }
