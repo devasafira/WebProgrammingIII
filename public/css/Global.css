@@ -126,6 +126,14 @@ html::-webkit-scrollbar-thumb{
     border-top-left-radius: 10px;
 }
 
+.shadow{
+    filter: drop-shadow(0 0 0.35rem #df541898) ;
+}
+
+.multiply{
+    background-color: none;
+}
+
 
 
 

@@ -45,12 +45,13 @@ class MenuSeeder extends Seeder
                 'stok'  => 120,
             ],
             [
-                'nama_menu' => 'Milk Rasberry Panacota',
-                'gambar'    => 'https://ichibansushi.co.id/wp-content/uploads/2023/06/MILK-RASPBERRY-PANNA-COTTA.jpg',
-                'kategori' => 'Dessert',
-                'harga' => 20000,
+                'nama_menu' => 'Cola Drink',
+                'gambar'    => '',
+                'kategori' => 'Drink',
+                'harga' => 15000,
                 'stok'  => 120,
             ],
+
             
         ];
     
