@@ -10,19 +10,10 @@ class KategoriSeeder extends Seeder
     {
         $data = [
             [
-                'kategori' => 'Appertizer'
-            ],
-            [
                 'kategori' => 'Nigiri Sushi'
             ],
             [
-                'kategori' => 'Sushi Roll'
-            ],
-            [
                 'kategori' => 'Ramen'
-            ],
-            [
-                'kategori' => 'Dessert'
             ],
             [
                 'kategori' => 'Drinks'
