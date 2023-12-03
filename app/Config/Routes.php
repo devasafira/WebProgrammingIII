@@ -39,5 +39,14 @@ $routes->group('tableAuth', ['namespace' => 'App\Controllers'], function($routes
     $routes->post('verify-qr-code', 'TableAuth::verifyQRCode');
 });
 
+//user
+$routes->get('/pilihMeja', 'TableController::pilihmeja');
+$routes->post('/pilihmeja', 'TableController::placeOrder');
+
+// pilihmenu
+// $routes->get('/pilihmenu', 'User::menu');
+$routes->get('/pilihmenu', 'MenuController::pilihmenu');
+$routes->get('/pesan', 'MenuController::tesmenu');
 
 
+ 
