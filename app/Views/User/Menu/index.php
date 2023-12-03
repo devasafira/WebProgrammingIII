@@ -44,7 +44,7 @@
         <div class="w-screen h-auto ">
             <div class="p-2 my-[2rem] text-center text-[2rem] poppins font-semibold" id="nigiriSushi">Nigiri Sushi</div>
             <div class="">
-                <table class="table align-middle text-center">
+                <table class="table align-middle text-center w-screen">
                     <?php foreach ($SushiMenus as $menu) : ?>
                         <tr>
                             <td>

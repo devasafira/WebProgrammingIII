@@ -22,6 +22,7 @@ class MenuController extends BaseController
         
         $data['menus'] = $this->MenuModel->findAll();
         $data['totalMenu'] = $this->MenuModel->countMenu();
+        $data['totalStok'] = $this->MenuModel->sumTotalStok();
         $data['totalKategori'] = $this->KategoriModel->countKategori();
 
         return view('Admin/Menu/menuPage', $data);
@@ -146,16 +147,5 @@ class MenuController extends BaseController
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan menu
         return redirect()->to('/menuAdmin')->with('success', 'Menu berhasil diupdate.');
     }
-    public function pilihmenu (){
-        $MenuModel = new MenuModel();
-        // Ambil data menu berdasarkan kategori
-        $data['appetizerMenus'] = $MenuModel->where('kategori', 'Appertizer')->findAll();
-        $data['sushiMenus'] = $MenuModel->where('kategori', 'Nigiri Sushi')->findAll();
-        $data['rollMenus'] = $MenuModel->where('kategori', 'Shusi Roll')->findAll();
-        $data['ramenMenus'] = $MenuModel->where('kategori', 'Ramen')->findAll();
-        $data['desertMenus'] = $MenuModel->where('kategori', 'Dessert')->findAll();
-        $data['drinksMenus'] = $MenuModel->where('kategori', 'Drinks')->findAll();
 
-        return view('Menu/menu', $data);
-    }
 }

@@ -19,12 +19,11 @@ class PesananController extends BaseController
 
     public function index()
     {
-        if (!session('isLoggedIn')) {
-            return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
-        }
-        
         $data['pesanans'] = $this->PesananModel->findAll();
+        $data['totalPesanan'] = $this->PesananModel->countPesanan();
+        $data['totalPesananSelesai'] = $this->PesananModel->countPesananSelesai();
+        $data['totalPesananDibatalkan'] = $this->PesananModel->countPesananDibatalkan();
 
-        return view('Admin/pesananPage', $data);
+        return view('Admin/Pesanan/pesananPage', $data);
     }
 }

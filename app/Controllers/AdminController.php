@@ -8,14 +8,8 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return view('Admin/pesananPage');
+        return view('Admin/Pesanan/pesananPage');
     }
 
-    public function menu(){
-        return view('Admin/menuPage');
-    }
-
-    public function table(){
-        return view('Admin/tablePage');
-    }
+    
 }

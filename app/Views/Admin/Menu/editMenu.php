@@ -9,7 +9,7 @@
                 <p class="text-[1rem] poppins font-semibold text-center m-auto mb-[1rem] uppercase text-lime-500" id="statusMessage"><?= session()->get('success') ?></p>
             </div>
 
-            <div class="text-[2rem] poppins font-semibold mb-[5rem]">Tambah Menu</div>
+            <div class="text-[2rem] poppins font-semibold mb-[5rem]">Edit Menu</div>
             
             <form action="/updateMenu/<?= $menu['id']; ?>" method="POST" enctype="multipart/form-data">
                 <div class="text-field flex justify-between my-[1rem]">
