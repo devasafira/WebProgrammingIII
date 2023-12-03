@@ -10,7 +10,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Jumlah Pesanan</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalPesanan ?></p>
             </div>
         </div>
 
@@ -18,7 +18,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Pesanan Selesai</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalPesananSelesai ?></p>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Pesanan Cancelled</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalPesananDibatalkan ?></p>
             </div>
         </div>
 

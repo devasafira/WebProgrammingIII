@@ -26,7 +26,7 @@
         <div class="card border-[3px] border-black" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title poppins font-semibold text-[1rem]">Total Stok</h5>
-                <p class="card-text poppins font-bold text-[2rem] ">23</p>
+                <p class="card-text poppins font-bold text-[2rem] "><?php echo $totalStok ?></p>
             </div>
         </div>
 

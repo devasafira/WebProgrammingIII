@@ -21,6 +21,7 @@ class MenuController extends BaseController
         
         $data['menus'] = $this->MenuModel->findAll();
         $data['totalMenu'] = $this->MenuModel->countMenu();
+        $data['totalStok'] = $this->MenuModel->sumTotalStok();
         $data['totalKategori'] = $this->KategoriModel->countKategori();
 
         return view('Admin/Menu/menuPage', $data);
@@ -145,5 +146,9 @@ class MenuController extends BaseController
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan menu
         return redirect()->to('/menuAdmin')->with('success', 'Menu berhasil diupdate.');
     }
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
 }

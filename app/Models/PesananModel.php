@@ -6,7 +6,23 @@ use CodeIgniter\Model;
 
 class PesananModel extends Model
 {
-    protected $table            = 'pesanan';
+    
+    public function countPesanan()
+    {
+        return $this->countAll();
+    }
+
+    public function countPesananSelesai()
+    {
+        return $this->where('status', 'Selesai')->countAllResults();
+    }
+
+    public function countPesananDibatalkan()
+    {
+        return $this->where('status', 'Dibatalkan')->countAllResults();
+    }
+
+    protected $table            = 'pesanans';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
