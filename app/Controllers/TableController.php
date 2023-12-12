@@ -3,40 +3,30 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AdminModel;
-use App\Models\MenuModel;
-use App\Models\PesananModel;
 use App\Models\TableModel;
 
 class TableController extends BaseController
 {
     public function __construct()
     {
-        $this->AdminModel = new AdminModel();
-        $this->MenuModel = new MenuModel();
-        $this->PesananModel = new PesananModel();
         $this->TableModel = new TableModel();
     }
 
     public function index()
     {
-<<<<<<< Updated upstream
         // if (!session('isLoggedIn')) {
         //     return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
         // }
         
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
         $data['totalTable'] = $this->TableModel->countTable();
         $data['totalActiveTable'] = $this->TableModel->countActiveTable();
         $data['totalBookingTable'] = $this->TableModel->countBookingTable();
->>>>>>> Stashed changes
+
         $data['tables'] = $this->TableModel->findAll();
 
         return view('Admin/Table/tablePage', $data);
     }
+
 
     public function tambahTable()
     {
@@ -118,8 +108,6 @@ class TableController extends BaseController
         // Tambahkan logika atau pindah ke halaman lain setelah mengubah status
         return redirect()->to('/tableAdmin')->with('success', 'Status table berhasil diubah');
     }
-<<<<<<< Updated upstream
-=======
 
     public function logout($id)
     {
@@ -155,6 +143,7 @@ class TableController extends BaseController
         $tableNumber = $this->request->getPost('table_number');
         $namaPembeli = $this->request->getPost('nama_pembeli');
         $tableModel = new TableModel();
+        $tableModel = new ModelTable();
         $tableModel->activateTable($tableNumber);
 
         $session = session();
@@ -164,5 +153,5 @@ class TableController extends BaseController
         ]);
         return redirect()->to('/pilihmenu');
     }
->>>>>>> Stashed changes
+
 }
