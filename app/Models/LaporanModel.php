@@ -4,43 +4,35 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PesananModel extends Model
+class LaporanModel extends Model
 {
-    public function getDataForUser($userId)
+
+    public function laporanHarian($date, $month, $year)
     {
-        return $this->where('id_table', $userId)
-            ->findAll();
+        return $this->select('*')
+            ->from('riwayat_pesanans')
+            ->join('menu', 'menu.id = riwayat_pesanans.id_menu', 'left')
+            ->where("DAY(riwayat_pesanans.tanggal_pembelian) = $date")
+            ->where("MONTH(riwayat_pesanans.tanggal_pembelian) = $month")
+            ->where("YEAR(riwayat_pesanans.tanggal_pembelian) = $year")
+            ->get()
+            ->getResult();
     }
 
-    public function countPesanan()
-    {
-        return $this->countAll();
-    }
-
-    public function countPesananSelesai()
-    {
-        return $this->where('status', 'Selesai')->countAllResults();
-    }
-
-    public function countPesananDibatalkan()
-    {
-        return $this->where('status', 'Dibatalkan')->countAllResults();
-    }
-
-    protected $table            = 'pesanans';
+    protected $table            = 'riwayat_pesanans';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['tanggal_pemesanan', 'nama_pembeli', 'pembayaran', 'id_table', 'table_number', 'status', 'id_menu', 'nama_menu', 'harga', 'jumlah', 'total'];
+    protected $allowedFields    = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = '';
-    protected $updatedField  = '';
-    protected $deletedField  = '';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
 
     // Validation
     protected $validationRules      = [];

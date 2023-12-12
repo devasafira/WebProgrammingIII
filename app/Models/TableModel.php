@@ -4,13 +4,38 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
 class TableModel extends Model
 {
 <<<<<<< Updated upstream
 
     // Tambahkan fungsi untuk menyimpan token QR Code
+<<<<<<< Updated upstream
     public function saveQRCodeToken($userId, $token)
 =======
+=======
+    function getTableName($userId) {
+        // Replace 'TableModel' with the actual name of your model
+        $table = TableModel::find($userId);
+    
+        if ($table) {
+            return $table->table_number;
+        } else {
+            return 'Table not found'; // You can handle this case according to your application's logic
+        }
+    }
+
+    public function updateTableStatus($id)
+    {
+        $this->set(['status' => 'Aktif'])->where('id', $id)->update();
+    }
+
+    public function cekData($table_number)
+    {
+        return $this->where('table_number', $table_number)->first();
+    }
+
+>>>>>>> Stashed changes
     // Untuk Hitung Jumlah Table
     public function countTable()
     {
@@ -68,6 +93,9 @@ class TableModel extends Model
     protected $allowedFields    = ['table_number', 'password', 'status'];
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
     // Dates
 =======
 >>>>>>> Stashed changes

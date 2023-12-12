@@ -35,6 +35,10 @@ class RiwayatPesanan extends Migration
                 'type' => 'INT',
                 'constraint' => 11,
             ],
+            'kategori' => [
+                'type' => 'VARCHAR',
+                'constraint' => '50',
+            ],
             'nama_menu' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',

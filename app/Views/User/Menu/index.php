@@ -30,7 +30,7 @@
             </div>
             <div class="text-center poppins text-[1rem] mt-[1rem] px-2">Drink</div>
         </div>
-        
+
     </div>
 
     <?php if (empty($SushiMenus) && empty($RamenMenus) && empty($DrinkMenus)) : ?>
@@ -67,7 +67,7 @@
                                 <form action="" method="post">
                                     <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <button type="submit" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</button>
+                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
                                     </div>
                                 </form>
                             </td>
@@ -106,7 +106,7 @@
                                 <form action="" method="post">
                                     <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <button type="submit" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</button>
+                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
                                     </div>
                                 </form>
                             </td>
@@ -145,7 +145,7 @@
                                 <form action="" method="post">
                                     <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <button type="submit" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</button>
+                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
                                     </div>
                                 </form>
                             </td>

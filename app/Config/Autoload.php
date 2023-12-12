@@ -119,7 +119,10 @@ class Autoload extends AutoloadConfig
     */
     public $autoload = [
         'libraries' => ['session', 'form_validation', 'database'],
+        'helper' => array('url', 'form')
     ];
+
+    
 
 
 }

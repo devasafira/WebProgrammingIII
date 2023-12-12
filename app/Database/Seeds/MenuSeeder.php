@@ -46,7 +46,14 @@ class MenuSeeder extends Seeder
             ],
             [
                 'nama_menu' => 'Cola Drink',
-                'gambar'    => '',
+                'gambar'    => 'https://youings.com/content/images/thumbs/0006070_COKE-CANS-330MLS-X-24.jpeg',
+                'kategori' => 'Drink',
+                'harga' => 15000,
+                'stok'  => 120,
+            ],
+            [
+                'nama_menu' => 'Sprite Drink',
+                'gambar'    => 'https://th.bing.com/th/id/OIP.FooAMaUUDkt3u9UqngGGMQHaHa?rs=1&pid=ImgDetMain',
                 'kategori' => 'Drink',
                 'harga' => 15000,
                 'stok'  => 120,

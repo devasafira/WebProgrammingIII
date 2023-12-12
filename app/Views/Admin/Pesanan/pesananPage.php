@@ -1,6 +1,6 @@
-<?= $this->extend('Templates/AdminTemplate/Layout') ; ?>
+<?= $this->extend('Templates/AdminTemplate/Layout'); ?>
 
-<?= $this->section('content') ; ?>
+<?= $this->section('content'); ?>
 <!-- wrapper -->
 <section class="">
     <!-- container -->
@@ -43,22 +43,42 @@
                     <th scope="col">Jumlah</th>
                     <th scope="col">Total</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Ganti Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="align-middle">
-                    <th scope="row">1</th>
-                    <td>iya</td>
-                    <td>helo</td>
-                    <td>lala</td>
-                    <td>500</td>
-                    <td>
-                        <p>selesai</p>
-                        <p>tidak selesai</p>
-                    </td>
-                </tr>
+                <?php $a = 1; ?>
+                <?php foreach ($pesanans as $pesanan) : ?>
+                    <tr class="align-middle">
+                        <th scope="row"><?= $a++; ?></th>
+                        <td><?= $pesanan['table_number']; ?></td>
+                        <td>
+                            <?php
+                            // Cek apakah 'nama_menu' adalah array
+                            if (is_array($pesanan['nama_menu'])) {
+                                // Jika array, tampilkan semua elemennya
+                                foreach ($pesanan['nama_menu'] as $menu_item) {
+                                    echo $menu_item . '<br>';
+                                }
+                            } else {
+                                // Jika bukan array, tampilkan nilai seperti biasa
+                                echo $pesanan['nama_menu'];
+                            }
+                            ?>
+                        </td>
+                        <td><?= $pesanan['jumlah']; ?></td>
+                        <td><?= $pesanan['total']; ?></td>
+                        <td>
+                            <div class="btn btn-outline-success"><?= $pesanan['status']; ?></div>
+                        </td>
+                        <td>
+                            <a type="button" href="/selesaikanPesanan/<?= $pesanan['id'];?>" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Selesai"><i class='bx bxs-edit-alt'></i></a>
+                            <a type="button" href="/batalkanPesanan" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dibatalkan"><i class='bx bxs-edit-alt'></i></a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </section>
-<?= $this->endSection() ; ?>
+<?= $this->endSection(); ?>

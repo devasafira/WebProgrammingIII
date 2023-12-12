@@ -15,7 +15,7 @@ class Pesanan extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'tanggal_pemesanan' => [
+            'tanggal_pembelian' => [
                 'type'       => 'DATETIME',
                 'null'      => true,
             ],
@@ -32,6 +32,10 @@ class Pesanan extends Migration
                 'constraint' => '20',
             ],
             'nama_pembeli' => [
+                'type' => 'VARCHAR',
+                'constraint' => '20',
+            ],
+            'pembayaran' => [
                 'type' => 'VARCHAR',
                 'constraint' => '20',
             ],

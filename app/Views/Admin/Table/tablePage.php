@@ -61,7 +61,7 @@
                         <td><?= $table['table_number']; ?></td>
                         <td><?= $table['status']; ?></td>
                         <td>
-                            <a type="button" onclick="statusVisibility()" href="/deactivateTable/<?= $table['id']; ?>" class="btn btn-outline-danger"><i class='bx bxs-minus-circle'></i></a>
+                            <a type="button" onclick="statusVisibility()" href="/logoutTable/<?= $table['id']; ?>" class="btn btn-outline-danger"><i class='bx bxs-minus-circle'></i></a>
                         </td>
                         <td>
                             <!-- Tambahkan aksi untuk setiap data menu -->

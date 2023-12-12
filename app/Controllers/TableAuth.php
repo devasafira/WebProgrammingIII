@@ -4,52 +4,76 @@ namespace App\Controllers;
 
 use App\Models\TableModel;
 use CodeIgniter\Controller;
+use CodeIgniter\Validation\Validation;
+use PHPUnit\Framework\SelfDescribing;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TableAuth extends BaseController
 {
-    public function generateQRCode()
+
+    public function __construct()
     {
-        // Dapatkan ID pengguna dari sesi atau dari proses otentikasi
-        $userId = 1; // Ganti dengan cara Anda mendapatkan ID pengguna
-
-        // Generate token untuk QR Code
-        $token = bin2hex(random_bytes(32)); // Sesuaikan dengan cara Anda menghasilkan token
-
-        // Simpan token QR Code ke dalam database
-        $tableModel = new TableModel();
-        $tableModel->saveQRCodeToken($userId, $token);
-
-        // Generate QR Code
-        $qrCode = QrCode::size(300)->generate($token);
-
-        // Tampilkan QR Code atau kirim sebagai respons JSON, sesuai kebutuhan
-        return view('auth/generate_qr_code', ['qrCode' => $qrCode]);
+        $this->TableModel = new TableModel();
+        $this->validation = \Config\Services::validation();
+        $this->session = \Config\Services::session();
     }
 
-    public function verifyQRCode()
+    public function TableLogin($id)
     {
-        // Dapatkan data dari form atau permintaan
-        $token = $this->request->getPost('token');
+        $isLoggedIn = session()->get('isLoggedIn');
 
-        // Dekripsi token
-        $data = decrypt($token);
-
-        // Dapatkan ID pengguna dari data token
-        $userId = $data['id'];
-
-        // Verifikasi token dengan token yang disimpan di dalam database
-        $tableModel = new TableModel();
-        $storedToken = $tableModel->getQRCodeToken($userId);
-
-        if ($storedToken === $token) {
-            // Token valid, lakukan langkah-langkah otentikasi sesuai kebutuhan Anda
-            // Misalnya, set sesi pengguna
-            // session()->set('user_id', $userId);
-            return redirect()->to('/dashboard')->with('success', 'Berhasil login dengan QR Code.');
+        // Jika sudah login, Anda dapat melakukan aksi tambahan
+        if ($isLoggedIn) {
+            return redirect()->to('/home');
         } else {
-            // Token tidak valid
-            return redirect()->to('/login')->with('error', 'Token QR Code tidak valid.');
+            $table = $this->TableModel->find($id);
+
+            return view('User/Table/tableLogin', ['table' => $table]);
         }
+    }
+
+    public function Login()
+    {
+
+
+        if ($this->request->getMethod() === 'post') {
+            // Check if the submitted username exists in your database
+            $table_number = $this->request->getPost('table_number');
+            $TableModel = new TableModel();
+            $table = $TableModel->cekData($table_number);
+
+            if ($table) {
+                // Set user data in the session
+                $session = session();
+                $session->set('id', $table['id']);
+                $session->set('table_number', $table['table_number']);
+                $session->set('isLoggedIn', true);
+
+                $TableModel->updateTableStatus($table['id'], 'Aktif');
+
+                // Redirect to the home page or any other page after successful login
+                return redirect()->to('/home');
+            } else {
+                // Redirect to login page with an error message
+                return redirect()->to('/login')->with('error', 'Invalid username');
+            }
+        } else {
+            // Display the login form
+            return view('User/Table/tableLogin');
+        }
+    }
+
+    public function logout($id)
+    {
+        $session = session();
+        $session->remove('isLoggedIn');
+        $session->remove('id');
+        $session->remove('table_number');
+
+        $TableModel = new TableModel();
+        $TableModel->deactivateTable($id);
+
+        // Redirect ke halaman setelah logout
+        return redirect()->to('/home')->with('message', 'Berhasil Logout');
     }
 }

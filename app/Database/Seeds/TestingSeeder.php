@@ -12,5 +12,8 @@ class TestingSeeder extends Seeder
         $this->call('MenuSeeder');
         $this->call('KategoriSeeder');
         $this->call('TableSeeder');
+        $this->call('MaterialsSeeder');
+        $this->call('HistorySeeder');
+
     }
 }
