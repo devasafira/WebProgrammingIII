@@ -16,6 +16,10 @@ class Cart extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'tanggal_pemesanan' => [
+                'type'       => 'DATETIME',
+                'null'      => true,
+            ],
             'id_table' => [
                 'type' => 'INT',
                 'constraint' => 11,

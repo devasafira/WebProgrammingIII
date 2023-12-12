@@ -48,6 +48,6 @@ class HistorySeeder extends Seeder
             
         ];
 
-        $this->db->table('kategoris')->insertBatch($data);
+        $this->db->table('riwayat_pesanans')->insertBatch($data);
     }
 }

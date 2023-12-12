@@ -18,7 +18,6 @@ class TableController extends BaseController
         //     return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
         // }
         
-
         $data['totalTable'] = $this->TableModel->countTable();
         $data['totalActiveTable'] = $this->TableModel->countActiveTable();
         $data['totalBookingTable'] = $this->TableModel->countBookingTable();
@@ -107,6 +106,22 @@ class TableController extends BaseController
         $model->deactivateTable($id);
 
         // Tambahkan logika atau pindah ke halaman lain setelah mengubah status
+        return redirect()->to('/tableAdmin')->with('success', 'Status table berhasil diubah');
+    }
+
+    public function logout($id)
+    {
+        $TableModel = new TableModel();
+
+        $session = session();
+        $session->remove('isLoggedIn');
+        $session->remove('id');
+        $session->remove('table_number');
+
+        $TableModel->deactivateTable($id);
+
+        
+        // Redirect ke halaman setelah logout
         return redirect()->to('/tableAdmin')->with('success', 'Status table berhasil diubah');
     }
 

@@ -4,8 +4,47 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
 class CartModel extends Model
 {
+    // public static function calculateTotal($userId)
+    // {
+    //     return self::where('id_table', $userId)->sum('total');
+    // }
+
+    // Tambahkan metode untuk memperbarui kuantitas pada keranjang
+    // public function updateQuantity($cartId, $newQuantity)
+    // {
+    //     $cart = $this->find($cartId);
+
+    //     if ($cart) {
+    //         // Hitung ulang subtotal
+    //         $newSubtotal = $cart['harga'] * $newQuantity;
+
+    //         // Update kuantitas dan subtotal
+    //         return $this->set(['jumlah' => $newQuantity, 'total' => $newSubtotal])->where('id', $cartId)->update();
+    //     }
+
+    //     return false;
+    // }
+
+    public function clearCartForUser($id)
+    {
+        return $this->where('id_table', $id)
+            ->delete();
+    }
+
+    public function getCartDataForUser($userId)
+    {
+        return $this->where('id_table', $userId)
+            ->findAll();
+    }
+
+    public function calculateTotal($userId)
+    {
+        return $this->selectSum('total')->where('id_table', $userId)->get()->getRow()->total;
+    }
+
     protected $table            = 'carts';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
@@ -16,10 +55,10 @@ class CartModel extends Model
 
     // Dates
     protected $useTimestamps = true;
-    protected $dateFormat    = 'timestamps';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = '';
+    protected $updatedField  = '';
+    protected $deletedField  = '';
 
     // Validation
     protected $validationRules      = [];

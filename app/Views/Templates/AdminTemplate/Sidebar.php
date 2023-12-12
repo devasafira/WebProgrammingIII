@@ -9,13 +9,13 @@
             <li class="list" onclick="activeLink()" ><a class="block" href="/pesananAdmin"><i class='bx bxs-cart-alt mx-[0.5rem]'></i>Pemesanan</a></li>
             <li class="list" onclick="activeLink()"><a class="block" href="/menuAdmin"><i class='bx bxs-food-menu mx-[0.5rem]'></i>Menu</a></li>
             <li class="list" ><a class="block" href="/tableAdmin" ><i class='bx bx-table mx-[0.5rem]'></i>Table</a></li>
-            <li class="list" ><a class="block" href="Riwayat Pesanan"><i class='bx bx-history mx-[0.5rem]'></i>Riwayat Pemesanan</a></li>
+            <li class="list" ><a class="block" href="/riwayatPesananAdmin"><i class='bx bx-history mx-[0.5rem]'></i>Riwayat Pemesanan</a></li>
         </ul>
     </div>
 
     <div class="leading-[3.5rem] pl-5 py-10 text-[1.05rem] roboto-slab text-white">
         <ul>
-            <li class="list"><a class="block" href="Laporan Penjualan"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Penjualan</a></li>
+            <li class="list"><a class="block" href="/laporan"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Penjualan</a></li>
             <li class="list"><a class="block" href="Laporan Stok"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Stok</a></li>
         </ul>
     </div>
