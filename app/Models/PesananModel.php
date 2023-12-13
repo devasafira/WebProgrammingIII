@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class PesananModel extends Model
 {
+    
     public function getDataForUser($userId)
     {
         return $this->where('id_table', $userId)

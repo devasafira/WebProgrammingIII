@@ -73,7 +73,7 @@
                         </td>
                         <td>
                             <a type="button" href="/selesaikanPesanan/<?= $pesanan['id'];?>" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Selesai"><i class='bx bxs-edit-alt'></i></a>
-                            <a type="button" href="/batalkanPesanan" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dibatalkan"><i class='bx bxs-edit-alt'></i></a>
+                            <a type="button" href="/batalkanPesanan/<?= $pesanan['id'];?>" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dibatalkan"><i class='bx bxs-edit-alt'></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

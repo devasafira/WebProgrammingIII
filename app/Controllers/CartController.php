@@ -65,6 +65,7 @@ class CartController extends BaseController
     {
         // Pastikan pengguna telah login dan dapat mengambil user_id dari sesi atau metode otentikasi yang digunakan
         $userId = session('id');
+        $namaPembeli = session('nama_pembeli');
         $tableNumber = session('table_number');
 
         // Cek apakah produk tersedia dalam database
@@ -92,6 +93,7 @@ class CartController extends BaseController
             $cartModel->save([
                 'tanggal_pemesanan' => date("Y-m-d H:i:s"),
                 'id_table' => $userId,
+                'nama_pembeli' => $namaPembeli,
                 'table_number' => $tableNumber, // assuming 'table_number' is stored in the session
                 'id_menu' => $id,
                 'nama_menu' => $menu['nama_menu'], // assuming 'nama_menu' is a field in your MenuModel
@@ -110,6 +112,7 @@ class CartController extends BaseController
     {
         $isLoggedIn = session()->get('isLoggedIn');
         $userId = session('id');
+        $namaPembeli = session('nama_pembeli');
 
         $payment = $this->request->getPost('pembayaran');
         
@@ -126,10 +129,11 @@ class CartController extends BaseController
                 // Loop melalui setiap item di keranjang dan tambahkan ke pesanan
                 foreach ($cartItems as $cartItem) {
                     $pesananModel->save([
-                        'tanggal_pesanan' => date("Y-m-d H:i:s"),
+                        'tanggal_pemesanan' => date("Y-m-d H:i:s"),
                         'id_table' => $cartItem['id_table'],
                         'table_number' => $cartItem['table_number'],
                         'id_menu' => $cartItem['id_menu'],
+                        'nama_pembeli' => $namaPembeli,
                         'pembayaran' => $payment,
                         'nama_menu' => $cartItem['nama_menu'],
                         'harga' => $cartItem['harga'],
@@ -149,5 +153,14 @@ class CartController extends BaseController
         } else {
             return redirect()->to('/')->with('message', 'Scan Barcode Login Terlebih Dahulu!');
         }
+    }
+     public function removeItem()
+    {
+        $cartItemId = $this->request->getPost('cart_item_id');
+
+        $cartModel = new CartModel();
+        $cartModel->delete($cartItemId);
+
+        return redirect()->to('/cart')->with('success', 'Item removed successfully');
     }
 }

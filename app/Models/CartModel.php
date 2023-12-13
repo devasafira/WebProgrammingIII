@@ -44,6 +44,7 @@ class CartModel extends Model
     {
         return $this->selectSum('total')->where('id_table', $userId)->get()->getRow()->total;
     }
+    
 
     protected $table            = 'carts';
     protected $primaryKey       = 'id';

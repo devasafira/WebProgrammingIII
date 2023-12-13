@@ -3,18 +3,20 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AdminModel;
-use App\Models\MenuModel;
 use App\Models\PesananModel;
 use App\Models\RiwayatPesananModel;
 
 class PesananController extends BaseController
 {
+    protected $PesananModel;
+
     public function __construct()
     {
-        $this->AdminModel = new AdminModel();
-        $this->MenuModel = new MenuModel();
         $this->PesananModel = new PesananModel();
+        // Sesuaikan dengan namespace dan nama model yang benar
+        $this->session = service('session');
+        $this->config = config('Auth');
+        $this->auth = service('authentication');
     }
 
     public function index()
@@ -29,42 +31,70 @@ class PesananController extends BaseController
 
     public function pesananSelesai($id)
     {
-        $auth = service('auth');
+        $namaPembeli = session('nama_pembeli');
+        $auth = service('authentication');
 
         if ($auth->check()) {
             // Dapatkan ID pengguna
             $userId = $auth->id();
             // Dapatkan nama pengguna (username)
-            $username = $auth->getUsername();
+            $username = $auth->user()->username;
 
-            $pesananItems = $this->PesananModel->find($id);
 
-            if ($pesananItems) {
+            $pesananItem = $this->PesananModel->find($id);
+
+            if ($pesananItem) {
                 $historyModel = new RiwayatPesananModel();
 
-                foreach ($pesananItems as $pesananItem) {
-                    $historyModel->save([
-                        'tanggal_pembelian' => $pesananItems['tanggal_pemesanan'],
-                        'id_table' => $pesananItems['id_table'],
-                        'table_number' => $pesananItems['table_number'],
-                        'id_menu' => $pesananItems['id_menu'],
-                        'pembayaran' => $pesananItems['pembayaran'],
-                        'nama_menu' => $pesananItems['nama_menu'],
-                        'harga' => $pesananItems['harga'],
-                        'jumlah' => $pesananItems['jumlah'],
-                        'total' => $pesananItems['total'],
-                        'id_admin' => $userId,
-                        'nama_admin' => $username,
-                    ]);
+                $historyModel->save([
+                    'tanggal_pembelian' => $pesananItem['tanggal_pemesanan'],
+                    'id_table' => $pesananItem['id_table'],
+                    'table_number' => $pesananItem['table_number'],
+                    'id_menu' => $pesananItem['id_menu'],
+                    'nama_pembeli' => $namaPembeli,
+                    'pembayaran' => $pesananItem['pembayaran'],
+                    'nama_menu' => $pesananItem['nama_menu'],
+                    'harga' => $pesananItem['harga'],
+                    'jumlah' => $pesananItem['jumlah'],
+                    'total' => $pesananItem['total'],
+                    'id_admin' => $userId,
+                    'nama_admin' => $username,
+                ]);
 
-
-                    $this->PesananModel->delete($id);
-                }
+                $this->PesananModel->delete($id);
 
                 return redirect()->back()->with('success', 'Pesanan telah ditandai sebagai selesai');
+            } else {
+                return redirect()->back()->with('error', 'Pesanan tidak ditemukan');
             }
         } else {
-            echo "User not logged in";
+            return redirect()->to('/login')->with('error', 'User not logged in');
+        }
+    }
+
+    public function batalkanPesanan($id)
+    {
+        $auth = service('authentication');
+
+        if ($auth->check()) {
+            $userId = $auth->id();
+            $username = $auth->user()->username;
+
+            $pesananItem = $this->PesananModel->find($id);
+
+            if ($pesananItem) {
+                // Lakukan logika tambahan jika diperlukan
+                // ...
+
+                // Hapus pesanan dari database
+                $this->PesananModel->delete($id);
+
+                return redirect()->back()->with('success', 'Pesanan berhasil dibatalkan');
+            } else {
+                return redirect()->back()->with('error', 'Pesanan tidak ditemukan');
+            }
+        } else {
+            return redirect()->to('/login')->with('error', 'Pengguna tidak masuk');
         }
     }
 }

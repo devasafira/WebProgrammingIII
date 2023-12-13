@@ -14,6 +14,7 @@ $routes->get('/home', 'UserController::index');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/menu', 'UserController::menu');
 $routes->get('/cart', 'CartController::index');
+$routes->post('/cart/remove', 'CartController::removeItem');
 $routes->get('/logoutUserTable/(:num)', 'CartController::logout/$1');
 
 // User Table
@@ -29,8 +30,6 @@ $routes->group('cart', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('processOrder', 'CartController::processOrder', ['as' => 'processOrder']);
 });
 
-<<<<<<< Updated upstream
-=======
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
 $routes->post('/pilihmeja', 'TableController::placeOrder');
 
@@ -38,7 +37,6 @@ $routes->post('/pilihmeja', 'TableController::placeOrder');
 // $routes->get('/pilihmenu', 'User::menu');
 $routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
->>>>>>> Stashed changes
 
 //------------------ ADMIN ROUTES ------------------
 
@@ -51,6 +49,7 @@ $routes->get('/riwayatPesananAdmin', 'RiwPemController::index');
 
 //ADMIN PESANAN
 $routes->get('/selesaikanPesanan/(:num)', 'PesananController::pesananSelesai/$1');
+$routes->get('/batalkanPesanan/(:num)', 'PesananController::batalkanPesanan/$1');
 
 // ADMIN LAPORAN
 $routes->get('/laporan', 'LaporanController::index');

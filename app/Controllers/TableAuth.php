@@ -38,6 +38,7 @@ class TableAuth extends BaseController
 
         if ($this->request->getMethod() === 'post') {
             // Check if the submitted username exists in your database
+            $namaPembeli = $this->request->getPost('nama_pembeli');
             $table_number = $this->request->getPost('table_number');
             $TableModel = new TableModel();
             $table = $TableModel->cekData($table_number);
@@ -46,6 +47,7 @@ class TableAuth extends BaseController
                 // Set user data in the session
                 $session = session();
                 $session->set('id', $table['id']);
+                $session->set('nama_pembeli', $namaPembeli);
                 $session->set('table_number', $table['table_number']);
                 $session->set('isLoggedIn', true);
 
@@ -68,6 +70,7 @@ class TableAuth extends BaseController
         $session = session();
         $session->remove('isLoggedIn');
         $session->remove('id');
+        $session->remove('nama_pembeli');
         $session->remove('table_number');
 
         $TableModel = new TableModel();
