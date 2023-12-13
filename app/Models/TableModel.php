@@ -7,32 +7,10 @@ use CodeIgniter\Model;
 class TableModel extends Model
 {
     // Tambahkan fungsi untuk menyimpan token QR Code
-    public function saveQRCodeToken($userId, $token)
-
-    // Untuk Hitung Jumlah Table
-    public function countTable()
-    {
-        return $this->countAll();
-    }
-    // Hitung Jumlah Table yang berstatus Aktif (Sedang Digunakan Customer)
-    public function countActiveTable()
-    {
-        return $this->where('status', 'Aktif')->countAllResults();
-    }
-    // Hitung Jumlah Table yang berstatus Dibooking
-    public function countBookingTable()
-    {
-        return $this->where('status', 'Dibooking')->countAllResults();
-    }
-    // Function untuk menonaktifkan table
-    public function deactivateTable($id)
-    {
-        $this->set(['status' => 'Tidak Aktif'])->where('id', $id)->update();
-    }
-
+    public function saveQRCodeToken($userId, $token){}
     public function getActiveTables()
     {
-        return $this->where('status', 'active')->findAll();
+        return $this->where('status', 'Aktif')->findAll();
     }
 
     public function getInactiveTables()
@@ -40,16 +18,49 @@ class TableModel extends Model
         return $this->where('status', 'Tidak Aktif')->findAll();
     }
 
+    public function getBookingTables()
+    {
+        return $this->where('status', 'Booking')->findAll();
+    }
     public function activateTable($tableNumber)
     {
-        try {
-            $this->where('table_number', $tableNumber)->set(['status' => 'active'])->update();
-            return true;
-        } catch (\Exception $e) {
-            // Handle the error, log it, or return false based on your application's needs.
-            return false;
-        }
+        $this->update($tableNumber,['status' => 'Aktif'] );
     }
+
+    public function deactivateTable($tableNumber)
+    {
+        $this->update($tableNumber,['status' => 'Tidak Aktif']);
+    }
+    public function bookingTable($tableNumber)
+    {
+        $this->update($tableNumber,['status' => 'Booking']);
+    }
+
+    public function countAll()
+    {
+        return $this->countAllResults();
+    }
+    // public function activateTable($tableNumber)
+    // {
+    //     try {
+    //         $this->where('table_number', $tableNumber)->set(['status' => 'Aktif'])->update();
+    //         return true;
+    //     } catch (\Exception $e) {
+    //         // Handle the error, log it, or return false based on your application's needs.
+    //         return false;
+    //     }
+    // }
+
+    // public function deactivateTable($tableNumber)
+    // {
+    //     try {
+    //         $this->where('table_number', $tableNumber)->set(['status' => 'Tidak Aktif'])->update();
+    //         return true;
+    //     } catch (\Exception $e) {
+    //         // Handle the error, log it, or return false based on your application's needs.
+    //         return false;
+    //     }
+    // }
 
     // public function deactivateTable($tableNumber)
     // {
@@ -79,7 +90,7 @@ class TableModel extends Model
     // Validation
     protected $validationRules      = [
         // Aturan validasi jika diperlukan, misalnya:
-        'table_number' => 'required|is_unique[table.table_number]',
+        // 'table_number' => 'required|is_unique[table.table_number]',
         // 'password'     => 'required|min_length[6]',
     ];
     protected $validationMessages   = [];

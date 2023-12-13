@@ -14,7 +14,7 @@
                     <li class="mx-[1.2rem] transition ease-in duration-300 hover:text-[#df5518]"><a href="/home">Home</a></li>
                     <li class="mx-[1.2rem] transition ease-in duration-300 hover:text-[#df5518]"><a href="/menu">Menu</a></li>
                     <li class="mx-[1.2rem] transition ease-in duration-300 hover:text-[#df5518]"><a href="/contact">Contact Us</a></li>
-                    <li class="mx-[1.2rem] transition ease-in duration-300 hover:text-[#df5518]"><a href=""><i class='bx bxs-cart'></i></a></li>
+                    <li class="mx-[1.2rem] transition ease-in duration-300 hover:text-[#df5518]"><a href="/cart"><i class='bx bxs-cart'></i></a></li>
                 </ul>
             </div>
         </nav>

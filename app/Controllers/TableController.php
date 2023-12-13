@@ -17,11 +17,14 @@ class TableController extends BaseController
         // if (!session('isLoggedIn')) {
         //     return redirect()->to('/login')->with('error', 'Anda harus login terlebih dahulu');
         // }
-        
 
-        $data['totalTable'] = $this->TableModel->countTable();
-        $data['totalActiveTable'] = $this->TableModel->countActiveTable();
-        $data['totalBookingTable'] = $this->TableModel->countBookingTable();
+
+        // $data['totalTable'] = $this->TableModel->countTable();
+        $data['totalTable'] = $this->TableModel->countAll();
+        $data['totalActiveTable'] = count($this->TableModel->getActiveTables());
+        $data['totalInactiveTable'] = count($this->TableModel->getInactiveTables());
+        $data['totalBookingTable'] = count($this->TableModel->getBookingTables());
+
 
         $data['tables'] = $this->TableModel->findAll();
 
@@ -81,34 +84,44 @@ class TableController extends BaseController
         $rules = [
             'table_number' => 'required',
         ];
-    
+
         if (!$this->validate($rules)) {
             // Jika validasi gagal, tampilkan pesan kesalahan
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-    
+
         // Ambil data dari input form
         $table_number  = $this->request->getPost('table_number');
-    
+
         // Update data menu ke dalam database
         $data = [
             'table_number' => $table_number,
         ];
-    
+
         $this->TableModel->update($id, $data);
-    
+
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan table
         return redirect()->to('/tableAdmin')->with('success', 'Table berhasil diupdate.');
     }
 
     public function deactivateTable($id)
     {
-        $model = new TableModel();
-        $model->deactivateTable($id);
+        // Menggunakan $this->TableModel untuk mengakses model yang sudah diinisialisasi
+        $this->TableModel->deactivateTable($id);
 
         // Tambahkan logika atau pindah ke halaman lain setelah mengubah status
         return redirect()->to('/tableAdmin')->with('success', 'Status table berhasil diubah');
     }
+
+    public function activateTable($id)
+    {
+        // Menggunakan $this->TableModel untuk mengakses model yang sudah diinisialisasi
+        $this->TableModel->activateTable($id);
+
+        // Tambahkan logika atau pindah ke halaman lain setelah mengubah status
+        return redirect()->to('/tableAdmin')->with('success', 'Status table berhasil diubah');
+    }
+
 
     public function pilihMeja()
     {
@@ -123,12 +136,12 @@ class TableController extends BaseController
         return view('User/Table/PilihMeja', $data);
     }
 
+
     public function placeOrder()
     {
         $tableNumber = $this->request->getPost('table_number');
         $namaPembeli = $this->request->getPost('nama_pembeli');
         $tableModel = new TableModel();
-        $tableModel = new ModelTable();
         $tableModel->activateTable($tableNumber);
 
         $session = session();
@@ -136,7 +149,7 @@ class TableController extends BaseController
             'nama_pembeli' => $namaPembeli,
             'table_number' => $tableNumber
         ]);
-        return redirect()->to('/pilihmenu');
-    }
 
+        return redirect()->to('/menu');
+    }
 }
