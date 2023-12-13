@@ -17,6 +17,10 @@ class PesananModel extends Model
     {
         return $this->countAll();
     }
+    public function countPesananDiproses()
+    {
+        return $this->where('status', 'Sedang diproses')->findAll();
+    }
 
     public function countPesananSelesai()
     {

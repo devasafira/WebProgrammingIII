@@ -21,7 +21,8 @@ class PesananController extends BaseController
 
     public function index()
     {
-        $data['pesanans'] = $this->PesananModel->findAll();
+        // $data['pesanans'] = $this->PesananModel->findAll();
+        $data['pesanans'] = $this->PesananModel->countPesananDiproses();
         $data['totalPesanan'] = $this->PesananModel->countPesanan();
         $data['totalPesananSelesai'] = $this->PesananModel->countPesananSelesai();
         $data['totalPesananDibatalkan'] = $this->PesananModel->countPesananDibatalkan();
@@ -61,7 +62,7 @@ class PesananController extends BaseController
                     'nama_admin' => $username,
                 ]);
 
-                $this->PesananModel->delete($id);
+                $this->PesananModel->update($id, ['status' => 'Selesai']);
 
                 return redirect()->back()->with('success', 'Pesanan telah ditandai sebagai selesai');
             } else {
@@ -87,7 +88,7 @@ class PesananController extends BaseController
                 // ...
 
                 // Hapus pesanan dari database
-                $this->PesananModel->delete($id);
+                $this->PesananModel->update($id, ['status' => 'Dibatalkan']);
 
                 return redirect()->back()->with('success', 'Pesanan berhasil dibatalkan');
             } else {
