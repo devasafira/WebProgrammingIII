@@ -135,7 +135,22 @@
             </div>
         </div>
     </div>
-    <!-- FORM FILTER -->
+
+    <!-- MENU FAVORIT -->
+    <div class="my-[1rem]">
+        <div class="card m-auto block" style="width: 80vw;">
+            <div class="card-header text-center poppins font-semibold uppercase tracking-wide">
+                Menu Terfavorit
+            </div>
+            <div class="card-body text-center">
+                <?php $no = 1; ?>
+                <?php foreach ($menuFavorit as $row) {
+                    echo (' ' . $no++ . '.  ');
+                    echo $row['nama_menu'];
+                } ?>
+            </div>
+        </div>
+    </div>
 
     <!-- Form Filter -->
     <form method="post" action="/laporan" class="flex ml-[1rem] my-[1rem]">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Penjualan Sushi PERBULAN <?= $month; ?> TAHUN <?= $year; ?></title>
+    <title>Laporan Penjualan Sushi PERBULAN <?= $selectedMonth; ?> TAHUN <?= $year; ?></title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -72,9 +72,9 @@
     </form>
 
     <h2>
-        <center>LAPORAN PENJUALAN SUSHIGO BULAN <?= $month; ?> TAHUN <?= $year; ?></center>
+        <center>LAPORAN PENJUALAN SUSHIGO BULAN <?= $selectedMonth; ?> TAHUN <?= $year; ?></center>
     </h2>
-    <h4>Bulan : <?= $month; ?> / <?= $year; ?></h4>
+    <h4>Bulan : <?= $selectedMonth; ?> / <?= $year; ?></h4>
     <table class="table">
         <thead>
             <tr>
