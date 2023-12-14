@@ -113,7 +113,6 @@ $routes->post('/updateTable/(:num)', 'TableController::updateTable/$1');
 // $routes->get('/deactivateTable/(:num)', 'TableController::deactivateTable/$1'); //diganti menjadi logout Table
 $routes->get('/logoutTable/(:num)', 'TableController::Logout/$1');
 
-
 //user
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
 $routes->post('/pilihmeja', 'TableController::placeOrder');
@@ -124,14 +123,15 @@ $routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
 
 
+
 //user
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
 $routes->post('/pilihmeja', 'TableController::placeOrder');
 
 
 // pilihmenu
+
 // $routes->get('/pilihmenu', 'User::menu');
 $routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
 
- 

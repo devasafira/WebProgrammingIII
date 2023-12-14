@@ -64,10 +64,13 @@
                             <td><?= $menu['nama_menu']; ?></td>
                             <td><?= $menu['harga']; ?></td>
                             <td>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" value="<?= $menu['id']; ?>">
-                                    <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
+                                <form action="" method="post" class="">
+                                    <div class="flex flex-row gap-x-[1rem] ml-[15%]">
+                                        <input type="number" name="jumlah" id="jumlah" min='0' max='<?= $menu['stok'] ?>' class="w-auto h-auto text-[1rem] rounded border-[1px] border-black">
+                                        <div class="order-btn h-auto p-2 bg-[#df5518] rounded text-center">
+                                            <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="text-white text-[1rem] font-bold">Add to Cart</a>
+                                        </div>
+                                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     </div>
                                 </form>
                             </td>
@@ -103,10 +106,13 @@
                             <td><?= $menu['nama_menu']; ?></td>
                             <td><?= $menu['harga']; ?></td>
                             <td>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" value="<?= $menu['id']; ?>">
-                                    <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
+                                <form action="" method="post" class="">
+                                    <div class="flex flex-row gap-x-[1rem] ml-[15%]">
+                                        <input type="number" name="jumlah" id="jumlah" min='0' max='<?= $menu['stok'] ?>' class="w-auto h-auto text-[1rem] rounded border-[1px] border-black">
+                                        <div class="order-btn h-auto p-2 bg-[#df5518] rounded text-center">
+                                            <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="text-white text-[1rem] font-bold">Add to Cart</a>
+                                        </div>
+                                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     </div>
                                 </form>
                             </td>
@@ -142,10 +148,13 @@
                             <td><?= $menu['nama_menu']; ?></td>
                             <td><?= $menu['harga']; ?></td>
                             <td>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" value="<?= $menu['id']; ?>">
-                                    <div class="order-btn w-[7rem] h-auto p-2 bg-[#df5518] rounded text-center">
-                                        <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="block text-white text-[1rem] font-bold">Add to Cart</a>
+                                <form action="" method="post" class="">
+                                    <div class="flex flex-row gap-x-[1rem] ml-[15%]">
+                                        <input type="number" name="jumlah" id="jumlah" min='0' max='<?= $menu['stok'] ?>' class="w-auto h-auto text-[1rem] rounded border-[1px] border-black">
+                                        <div class="order-btn h-auto p-2 bg-[#df5518] rounded text-center">
+                                            <a href="<?= route_to('addToCart', $menu['id'], 1) ?>" name="submit" class="text-white text-[1rem] font-bold">Add to Cart</a>
+                                        </div>
+                                        <input type="hidden" name="id" value="<?= $menu['id']; ?>">
                                     </div>
                                 </form>
                             </td>
@@ -157,38 +166,5 @@
     <?php endif; ?>
 
 </section>
-
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var orderBtn = document.querySelector('.order-btn');
-
-        orderBtn.addEventListener('click', function() {
-            // Ganti tombol menjadi Increment dan Decrement
-            orderBtn.innerHTML = `
-                <button onclick="decrement()">-</button>
-                <span id="stok">1</span>
-                <button onclick="increment()">+</button>
-            `;
-        });
-    });
-
-    function increment() {
-        const stokInput = document.getElementById('stok');
-        const stokValue = parseInt(stokInput.value);
-        if (!isNaN(stokValue)) {
-            stokInput.value = stokValue + 1;
-        } else {
-            stokInput.value = 1;
-        }
-    }
-
-    function decrement() {
-        const stokInput = document.getElementById('stok');
-        const stokValue = parseInt(stokInput.value);
-        if (!isNaN(stokValue) && stokValue > 0) {
-            stokInput.value = stokValue - 1;
-        }
-    }
-</script> -->
 
 <?= $this->endSection(); ?>
