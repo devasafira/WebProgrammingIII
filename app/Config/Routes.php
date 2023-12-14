@@ -106,18 +106,13 @@ $routes->post('/updateTable/(:num)', 'TableController::updateTable/$1');
 $routes->get('/logoutTable/(:num)', 'TableController::Logout/$1');
 
 
-
-
-<<<<<<< Updated upstream
-
-
-=======
 //user
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
 $routes->post('/pilihmeja', 'TableController::placeOrder');
 
 // pilihmenu
+
 // $routes->get('/pilihmenu', 'User::menu');
 $routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
->>>>>>> Stashed changes
+
