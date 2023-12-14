@@ -63,51 +63,56 @@ class CartController extends BaseController
     }
 
     public function addToCart($id, $jumlah = 1)
-    {
-        // Pastikan pengguna telah login dan dapat mengambil user_id dari sesi atau metode otentikasi yang digunakan
-        $userId = session('id');
-        $namaPembeli = session('nama_pembeli');
-        $tableNumber = session('table_number');
+{
+    // Pastikan pengguna telah login dan dapat mengambil user_id dari sesi atau metode otentikasi yang digunakan
+    $userId = session('id');
+    $namaPembeli = session('nama_pembeli');
+    $tableNumber = session('table_number');
 
-        // Cek apakah produk tersedia dalam database
-        $productModel = new MenuModel();
-        $menu = $productModel->find($id);
+    // Cek apakah produk tersedia dalam database
+    $productModel = new MenuModel();
+    $menu = $productModel->find($id);
 
-        if (!$menu) {
-            return redirect()->back()->with('error', 'Produk tidak ditemukan');
-        }
-
-        // Cek apakah produk sudah ada di keranjang, jika iya, update jumlahnya
-        $cartModel = new CartModel();
-        $existingCartItem = $cartModel->where('id', $userId)
-            ->where('id_menu', $id)
-            ->first();
-
-        if ($existingCartItem) {
-            $newQuantity = $existingCartItem['jumlah'] + $jumlah;
-            $cartModel->update($existingCartItem['id'], [
-                'jumlah' => $newQuantity,
-                'total' => $menu['harga'] * $newQuantity,
-            ]);
-        } else {
-            // Jika produk belum ada di keranjang, tambahkan
-            $cartModel->save([
-                'tanggal_pemesanan' => date("Y-m-d H:i:s"),
-                'id_table' => $userId,
-                'nama_pembeli' => $namaPembeli,
-                'table_number' => $tableNumber, // assuming 'table_number' is stored in the session
-                'id_menu' => $id,
-                'nama_menu' => $menu['nama_menu'], // assuming 'nama_menu' is a field in your MenuModel
-                'harga' => $menu['harga'], // assuming 'harga' is a field in your MenuModel
-                'jumlah' => $jumlah,
-                'total' => $menu['harga'] * $jumlah, // calculate total based on harga and jumlah
-            ]);
-        }
-
-        $totalKeseluruhan = $cartModel->calculateTotal($userId);
-
-        return redirect()->to('/cart')->with('success', 'Produk berhasil ditambahkan ke keranjang')->with('totalKeseluruhan', $totalKeseluruhan);
+    if (!$menu) {
+        return redirect()->back()->with('error', 'Produk tidak ditemukan');
     }
+
+    // Cek apakah produk sudah ada di keranjang, jika iya, update jumlahnya
+    $cartModel = new CartModel();
+    $existingCartItem = $cartModel->getItemByMenuName($namaPembeli, $menu['nama_menu']);
+
+    if ($existingCartItem) {
+        $newQuantity = $existingCartItem['jumlah'] + $jumlah;
+        $cartModel->update($existingCartItem['id'], [
+            'jumlah' => $newQuantity,
+            'total' => $menu['harga'] * $newQuantity,
+        ]);
+
+        session()->setFlashdata('success', 'Jumlah produk di keranjang berhasil diperbarui.');
+    } else {
+        // Jika produk belum ada di keranjang, tambahkan
+        $cartModel->save([
+            'tanggal_pemesanan' => date("Y-m-d H:i:s"),
+            'id_table' => $userId,
+            'nama_pembeli' => $namaPembeli,
+            'table_number' => $tableNumber, // assuming 'table_number' is stored in the session
+            'id_menu' => $id,
+            'nama_menu' => $menu['nama_menu'], // assuming 'nama_menu' is a field in your MenuModel
+            'harga' => $menu['harga'], // assuming 'harga' is a field in your MenuModel
+            'jumlah' => $jumlah,
+            'total' => $menu['harga'] * $jumlah, // calculate total based on harga and jumlah
+        ]);
+
+        session()->setFlashdata('success', 'Produk berhasil ditambahkan ke keranjang.');
+    }
+
+    // Menghitung total keseluruhan dan menyimpannya dalam sesi
+    $totalKeseluruhan = $cartModel->calculateTotal($userId);
+    session()->set('totalKeseluruhan', $totalKeseluruhan);
+
+    return redirect()->to('/cart');
+}
+
 
     public function processOrder()
     {

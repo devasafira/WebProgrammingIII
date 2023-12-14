@@ -28,6 +28,7 @@ $routes->get('/statusPesanan', 'UserController::statusPesanan');
 $routes->group('cart', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('add/(:num)/(:num)', 'CartController::addToCart/$1/$2', ['as' => 'addToCart']);
     $routes->post('processOrder', 'CartController::processOrder', ['as' => 'processOrder']);
+    $routes->post('add/(:num)', 'CartController::addToCart/$1/$2', ['as' => 'addToCart']);
 });
 
 $routes->get('/pilihMeja', 'TableController::pilihmeja');

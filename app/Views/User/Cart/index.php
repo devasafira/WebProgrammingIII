@@ -76,7 +76,7 @@
                         </div>
                         <div>
                             
-                            <p>Total yang harus dibayarkan: $<?= isset($totalKeseluruhan) ? $totalKeseluruhan : 0 ?></p>
+                            <p>Total yang harus dibayarkan: Rp. <?= isset($totalKeseluruhan) ? $totalKeseluruhan : 0 ?></p>
                         </div>
                             <!-- tambahkan lebih banyak input radio sesuai kebutuhan -->
                         <button class="btn btn-primary text-blue-700 hover:text-white" type="submit">Submit</button>
