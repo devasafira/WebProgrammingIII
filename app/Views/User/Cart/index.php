@@ -11,6 +11,7 @@
                 <th>Harga</th>
                 <th>Jumlah</th>
                 <th>Subtotal</th>
+                <th>Action</th>
             </thead>
             <tbody>
                 <?php if (empty($carts)) : ?>
@@ -21,9 +22,16 @@
                 <?php foreach ($carts as $cart) : ?>
                     <tr class="cart-item">
                         <td><?= $cart['nama_menu']; ?></td>
+                        <td class="hidden"><?= $cart['nama_menu']; ?></td>
                         <td class="item-price"><?= $cart['harga']; ?></td>
                         <td><?= $cart['jumlah']; ?></td>
                         <td class="subtotal"><?= $cart['harga'] * $cart['jumlah']; ?></td>
+                        <td>
+                            <form action="/cart/remove" method="post">
+                                <input type="hidden" name="cart_item_id" value="<?= $cart['id'] ?>">
+                                <button type="submit" class="btn btn-outline-danger">HAPUS</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -37,6 +45,7 @@
                         <a class="btn btn-outline-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Order</a>
                         <a class="btn btn-outline-primary" href="/statusPesanan">Lihat Status Pesanan</a>
                         <a class="btn btn-outline-danger" href="/logoutUserTable/<?= $id; ?>">Cancel</a>
+                        <a href="/menu" class="btn btn-outline-warning">Pilih Menu Lagi</a> <!-- Link untuk kembali ke halaman menu -->
                     </td>
                 </tr>
             </tfoot>
@@ -65,12 +74,16 @@
                             <input type="radio" class="form-check-input" id="Shopeepay" name="pembayaran" value="Shopeepay">
                             <img class="" src="https://imgkub.com/images/2022/08/07/Logo-ShopeePay-768x403.md.png" alt="Shopeepay" width="100px" height="100px">
                         </div>
-                        <!-- tambahkan lebih banyak input radio sesuai kebutuhan -->
+                        <div>
+                            
+                            <p>Total yang harus dibayarkan: $<?= isset($totalKeseluruhan) ? $totalKeseluruhan : 0 ?></p>
+                        </div>
+                            <!-- tambahkan lebih banyak input radio sesuai kebutuhan -->
                         <button class="btn btn-primary text-blue-700 hover:text-white" type="submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                <!-- <input class="btn btn-primary text-blue-700 hover:text-white" type="submit" value="Bayar"> -->
+                    <!-- <input class="btn btn-primary text-blue-700 hover:text-white" type="submit" value="Bayar"> -->
                 </div>
             </div>
         </div>

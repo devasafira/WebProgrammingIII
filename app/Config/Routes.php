@@ -14,6 +14,7 @@ $routes->get('/home', 'UserController::index');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/menu', 'UserController::menu');
 $routes->get('/cart', 'CartController::index');
+$routes->post('/cart/remove', 'CartController::removeItem');
 $routes->get('/logoutUserTable/(:num)', 'CartController::logout/$1');
 
 // User Table
@@ -50,6 +51,7 @@ $routes->get('/riwayatPesananAdmin', 'RiwPemController::index');
 
 //ADMIN PESANAN
 $routes->get('/selesaikanPesanan/(:num)', 'PesananController::pesananSelesai/$1');
+$routes->get('/batalkanPesanan/(:num)', 'PesananController::batalkanPesanan/$1');
 
 // ADMIN LAPORAN PENJUALAN
 $routes->get('/laporan', 'LaporanController::index');
@@ -59,6 +61,7 @@ $routes->post('/laporan', 'LaporanController::filterLaporan');
 $routes->post('/laporan/printpdf', 'LaporanController::printpdf');
 $routes->post('/laporan/print', 'LaporanController::print');
 $routes->post('/laporan/excel', 'LaporanController::ExportExcel');
+
 
 
 // ADMIN LAPORAN STOK
@@ -89,6 +92,10 @@ $routes->post('/laporan/printOut', 'LaporanStokController::printOut');
 $routes->post('/laporan/excelOut', 'LaporanStokController::ExportOutExcel');
 
 
+//laporan stok
+$routes->get('/stok', 'StokController::index');
+
+
 // ADMIN MENU 
 $routes->get('/tambahMenu', 'MenuController::tambahMenu');
 $routes->post('/saveMenu', 'MenuController::saveMenu');
@@ -106,12 +113,6 @@ $routes->post('/updateTable/(:num)', 'TableController::updateTable/$1');
 $routes->get('/logoutTable/(:num)', 'TableController::Logout/$1');
 
 
-
-
-<<<<<<< Updated upstream
-
-
-=======
 //user
 $routes->get('/pilihMeja', 'TableController::pilihmeja');
 $routes->post('/pilihmeja', 'TableController::placeOrder');
@@ -120,4 +121,16 @@ $routes->post('/pilihmeja', 'TableController::placeOrder');
 // $routes->get('/pilihmenu', 'User::menu');
 $routes->get('/pilihmenu', 'MenuController::pilihmenu');
 $routes->get('/pesan', 'MenuController::tesmenu');
->>>>>>> Stashed changes
+
+
+//user
+$routes->get('/pilihMeja', 'TableController::pilihmeja');
+$routes->post('/pilihmeja', 'TableController::placeOrder');
+
+
+// pilihmenu
+// $routes->get('/pilihmenu', 'User::menu');
+$routes->get('/pilihmenu', 'MenuController::pilihmenu');
+$routes->get('/pesan', 'MenuController::tesmenu');
+
+ 
