@@ -74,12 +74,16 @@
                             <input type="radio" class="form-check-input" id="Shopeepay" name="pembayaran" value="Shopeepay">
                             <img class="" src="https://imgkub.com/images/2022/08/07/Logo-ShopeePay-768x403.md.png" alt="Shopeepay" width="100px" height="100px">
                         </div>
-                        <!-- tambahkan lebih banyak input radio sesuai kebutuhan -->
+                        <div>
+                            
+                            <p>Total yang harus dibayarkan: $<?= isset($totalKeseluruhan) ? $totalKeseluruhan : 0 ?></p>
+                        </div>
+                            <!-- tambahkan lebih banyak input radio sesuai kebutuhan -->
                         <button class="btn btn-primary text-blue-700 hover:text-white" type="submit">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                <!-- <input class="btn btn-primary text-blue-700 hover:text-white" type="submit" value="Bayar"> -->
+                    <!-- <input class="btn btn-primary text-blue-700 hover:text-white" type="submit" value="Bayar"> -->
                 </div>
             </div>
         </div>

@@ -53,6 +53,7 @@ class CartController extends BaseController
         $session->remove('isLoggedIn');
         $session->remove('id');
         $session->remove('table_number');
+        $session->remove('nama_pembeli');
 
         $TableModel->deactivateTable($id);
         $CartModel->clearCartForUser($id);

@@ -16,7 +16,7 @@
     <div class="leading-[3.5rem] pl-5 py-10 text-[1.05rem] roboto-slab text-white">
         <ul>
             <li class="list"><a class="block" href="/laporan"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Penjualan</a></li>
-            <li class="list"><a class="block" href="Laporan Stok"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Stok</a></li>
+            <li class="list"><a class="block" href="/laporanStok"><i class='bx bxs-report mx-[0.5rem]' ></i>Laporan Stok</a></li>
         </ul>
     </div>
     

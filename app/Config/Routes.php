@@ -60,6 +60,9 @@ $routes->post('/laporan/printpdf', 'LaporanController::printpdf');
 $routes->post('/laporan/print', 'LaporanController::print');
 $routes->post('/laporan/excel', 'LaporanController::ExportExcel');
 
+//laporan stok
+$routes->get('/stok', 'StokController::index');
+
 // ADMIN MENU 
 $routes->get('/tambahMenu', 'MenuController::tambahMenu');
 $routes->post('/saveMenu', 'MenuController::saveMenu');
