@@ -188,7 +188,23 @@
             <button type="submit" class="border-[1px] border-black rounded px-[1rem] mx-[0.5rem] hover:bg-[#202920] hover:text-white" value="Submit">Filter</button>
         </div>
     </form>
-
+    <div class="">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Menu Terfavorit
+        </div>
+        <div class="card-body">
+            <?php
+            // Ubah foreach menjadi if karena getMostSoldMenu hanya mengembalikan satu baris
+            if ($menuFavorit) {
+                // Perbarui untuk mengakses elemen array
+                echo $menuFavorit['nama_menu'];
+                echo $menuFavorit['total_pembelian'];
+            }
+            ?>
+        </div>
+    </div>
+</div>
     <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN PENJUALAN SUSHIGO</h2>
 
     <?php if ($selectedMonth !== 'All') : ?>

@@ -44,6 +44,13 @@ class CartModel extends Model
     {
         return $this->selectSum('total')->where('id_table', $userId)->get()->getRow()->total;
     }
+    public function getItemByMenuName($namaPembeli, $namaMenu)
+    {
+        return $this->where('nama_pembeli', $namaPembeli)
+            ->where('nama_menu', $namaMenu)
+            ->first();
+    }
+    
 
     protected $table            = 'carts';
     protected $primaryKey       = 'id';

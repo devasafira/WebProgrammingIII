@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class PesananModel extends Model
 {
+    
     public function getDataForUser($userId)
     {
         return $this->where('id_table', $userId)
@@ -15,6 +16,10 @@ class PesananModel extends Model
     public function countPesanan()
     {
         return $this->countAll();
+    }
+    public function countPesananDiproses()
+    {
+        return $this->where('status', 'Sedang diproses')->findAll();
     }
 
     public function countPesananSelesai()

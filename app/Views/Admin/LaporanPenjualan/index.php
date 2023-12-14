@@ -188,6 +188,24 @@
         </div>
     </form>
 
+    <div class="">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Menu Terfavorit
+        </div>
+        <div class="card-body">
+            <?php
+            // Ubah foreach menjadi if karena getMostSoldMenu hanya mengembalikan satu baris
+            if ($menuFavorit) {
+                // Perbarui untuk mengakses elemen array
+                echo $menuFavorit['nama_menu'];
+                echo $menuFavorit['total_pembelian'];
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
     <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN PENJUALAN SUSHIGO</h2>
 
     <?php if ($selectedMonth !== 'All') : ?>

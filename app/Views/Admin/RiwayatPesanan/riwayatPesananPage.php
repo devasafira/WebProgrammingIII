@@ -16,6 +16,7 @@
                     <th scope="col">Table Number</th>
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Total</th>
+                    
                 </tr>
             </thead>
             <tbody>

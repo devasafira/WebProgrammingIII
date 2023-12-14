@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\AdminModel;
 use App\Models\KategoriModel;
 use App\Models\MenuModel;
+use PhpParser\Node\Expr\New_;
 
 class MenuController extends BaseController
 {
@@ -146,9 +147,5 @@ class MenuController extends BaseController
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan menu
         return redirect()->to('/menuAdmin')->with('success', 'Menu berhasil diupdate.');
     }
-<<<<<<< Updated upstream
 
-=======
-    
->>>>>>> Stashed changes
 }
