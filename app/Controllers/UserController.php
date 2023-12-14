@@ -24,7 +24,7 @@ class UserController extends BaseController
     // Untuk ke Contact User
     public function contact()
     {
-        return view('Auth/loginPage');
+        return view('User/Contact/index');
     }
     // Untuk ke Menu User
     public function menu()

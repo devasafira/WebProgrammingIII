@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
                 <!-- Form Print -->
-                <form method="post" action="/laporan/print" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/printOut" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -54,7 +54,7 @@
             </div>
             <div class="card-body">
                 <!-- Form PDF -->
-                <form method="post" action="/laporan/printpdf" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/printOutpdf" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -97,7 +97,7 @@
             </div>
             <div class="card-body">
                 <!-- Form Excel -->
-                <form method="post" action="/laporan/excel" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/excelOut" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -135,24 +135,14 @@
             </div>
         </div>
     </div>
-
-    <div class="my-[1rem]">
-        <div class="card m-auto block" style="width: 80vw;">
-            <div class="card-header text-center poppins font-semibold uppercase tracking-wide">
-                Menu Terfavorit
-            </div>
-            <div class="card-body text-center">
-                <?php $no = 1; ?>
-                <?php foreach ($menuFavorit as $row) {
-                    echo (' ' . $no++ . '.  ');
-                    echo $row['nama_menu'];
-                } ?>
-            </div>
-        </div>
+    <div class="flex">
+        
     </div>
 
+    <a href="/kurangMaterials" class="border-[1px] border-black rounded p-[0.3rem] mt-[1rem] float-right mx-[0.5rem] hover:bg-[#202920] hover:text-white">Tambah Laporan Keluar</a>
+
     <!-- FORM FILTER -->
-    <form method="post" action="/laporan" class="flex ml-[1rem] my-[1rem]">
+    <form method="post" action="/materialsOutFilter" class="flex ml-[1rem] my-[1rem]">
         <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
             <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                 <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -188,25 +178,7 @@
         </div>
     </form>
 
-    <div class="">
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">
-            Menu Terfavorit
-        </div>
-        <div class="card-body">
-            <?php
-            // Ubah foreach menjadi if karena getMostSoldMenu hanya mengembalikan satu baris
-            if ($menuFavorit) {
-                // Perbarui untuk mengakses elemen array
-                echo $menuFavorit['nama_menu'];
-                echo $menuFavorit['total_pembelian'];
-            }
-            ?>
-        </div>
-    </div>
-</div>
-
-    <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN PENJUALAN SUSHIGO</h2>
+    <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN BAHAN KELUAR SUSHIGO</h2>
 
     <?php if ($selectedMonth !== 'All') : ?>
         <div class="poppins font-semibold ml-[1rem]"> Bulan : <?= $selectedMonth; ?> / <?= $selectedYear; ?></div>
@@ -219,20 +191,19 @@
         <Table class="table montserrat text-center">
             <thead>
                 <tr>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Tanggal</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">No Invoice</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">ID Menu</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Nama Menu</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Jumlah Penjualan</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">No</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Tanggal Barang Keluar</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Nama Bahan</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Jumlah Barang Keluar</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($laporan as $data) : ?>
+                <?php $no = 1; ?>
+                <?php foreach ($barangKeluar as $data) : ?>
                     <tr>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['tanggal_pembelian']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['id']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['id_menu']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['nama_menu']; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $no++; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $data['tanggal']; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $data['bahan']; ?></td>
                         <td class="border-[1px] border-black p-[10px]"><?= $data['jumlah']; ?></td>
                     </tr>
                 <?php endforeach; ?>

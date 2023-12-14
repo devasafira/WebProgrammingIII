@@ -71,6 +71,6 @@ class Filters extends BaseConfig
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
     public array $filters = [
-        'login' => ['before' => ['admin', 'pesananAdmin', 'menuAdmin', 'tableAdmin']]
+        'login' => ['before' => ['admin', 'pesananAdmin', 'menuAdmin', 'tableAdmin', 'riwayatPesananAdmin', 'laporan', 'laporanStok', 'laporanMaterialsIn', 'materialsInFilter', 'laporanMaterialsOut', 'materialsOutFilter']]
     ];
 }
