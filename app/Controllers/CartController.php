@@ -103,7 +103,7 @@ class CartController extends BaseController
 
         $totalKeseluruhan = $cartModel->calculateTotal($userId);
 
-        return redirect()->to('/cart')->with('success', 'Produk berhasil ditambahkan ke keranjang')->with('totalKeseluruhan', $totalKeseluruhan);
+        return redirect()->to('/menu')->with('success', 'Produk berhasil ditambahkan ke keranjang')->with('totalKeseluruhan', $totalKeseluruhan);
     }
 
     public function processOrder()

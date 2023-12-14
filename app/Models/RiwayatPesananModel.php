@@ -14,9 +14,35 @@ class RiwayatPesananModel extends Model
             ->where('YEAR(tanggal_pembelian)', $selectedYear)
             ->groupBy('nama_menu')
             ->orderBy('total_pembelian', 'DESC')
-            ->get()
-            ->getResult();
+            ->findAll();
     }
+
+    public function getTotalPembelianPerMenuYear($selectedYear)
+    {
+        return $this->select('nama_menu, SUM(jumlah) as total_pembelian')
+            ->where('YEAR(tanggal_pembelian)', $selectedYear)
+            ->groupBy('nama_menu')
+            ->orderBy('total_pembelian', 'DESC')
+            ->findAll();
+    }
+
+    public function getTotalPembelianPerMenuAll()
+    {
+        return $this->select('nama_menu, SUM(jumlah) as total_pembelian')
+            ->groupBy('nama_menu')
+            ->orderBy('total_pembelian', 'DESC')
+            ->findAll();
+    }
+    // public function getTotalPembelianPerMenu($selectedMonth, $selectedYear)
+    // {
+    //     return $this->select('nama_menu, SUM(jumlah) as total_pembelian')
+    //         ->where('MONTH(tanggal_pembelian)', $selectedMonth)
+    //         ->where('YEAR(tanggal_pembelian)', $selectedYear)
+    //         ->groupBy('nama_menu')
+    //         ->orderBy('total_pembelian', 'DESC')
+    //         ->get()
+    //         ->getResult();
+    // }
 
     public function getMostSoldMenu($selectedMonth, $selectedYear)
     {

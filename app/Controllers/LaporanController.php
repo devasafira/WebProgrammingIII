@@ -45,7 +45,7 @@ class LaporanController extends BaseController
         $selectedYear = $this->request->getPost('year');
 
         // Panggil metode pada model untuk menghitung total pembelian per menu
-        $data['laporan'] = $model->getMostSoldMenu($selectedMonth, $selectedYear);
+        $data['menuFavorit'] = $model->getTotalPembelianPerMenu($selectedMonth, $selectedYear);
 
         // Tampilkan view dengan data hasil query
         return view('laporan_menu_terbanyak', $data);
@@ -68,7 +68,7 @@ class LaporanController extends BaseController
             'laporan' => $this->HistoryModel->getAllRecords(),
             'selectedMonth' => $selectedMonth,
             'year' => $selectedYear,
-            'menuFavorit' => $this->HistoryModel->getMostSoldMenu($selectedMonth, $selectedYear),
+            'menuFavorit' => $this->HistoryModel->getTotalPembelianPerMenuAll(),
         ];
 
         // Pass the data to the view
@@ -88,12 +88,17 @@ class LaporanController extends BaseController
         // Check if "All Records" option is selected
         if ($selectedMonth === 'All') {
             $filteredData = $this->HistoryModel->getAllRecords();
+            $filteredDataFav = $this->HistoryModel->getTotalPembelianPerMenuAll();
             // Handle logic for displaying all records for the selected year
         } elseif ($selectedMonth === 'All Month') {
             $filteredData = $this->HistoryModel->getAllRecordsPerYear($selectedYear);
+            $filteredDataFav = $this->HistoryModel->getTotalPembelianPerMenuYear($selectedYear);
+
         } else {
             // Handle logic for displaying records for the selected month and year
             $filteredData = $this->HistoryModel->getLaporanPenjualan($selectedMonth, $selectedYear);
+            $filteredDataFav = $this->HistoryModel->getTotalPembelianPerMenu($selectedMonth, $selectedYear);
+
         }
 
         // Pass data to the view
@@ -101,7 +106,7 @@ class LaporanController extends BaseController
             'laporan' => $filteredData,
             'selectedMonth' => $selectedMonth,
             'year' => $selectedYear,
-            'menuFavorit' => $this->HistoryModel->getMostSoldMenu($selectedMonth, $selectedYear),
+            'menuFavorit' => $filteredDataFav,
         ];
 
         return view('Admin/LaporanPenjualan/index', $data);

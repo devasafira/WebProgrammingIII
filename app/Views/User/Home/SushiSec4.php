@@ -8,9 +8,9 @@
                     <div class="roboto-slab text-[1rem] text-white px-2 py-4 mt-[2rem] font-thin tracking-[0.3rem] upright border-[1px] border-white uppercase ">menu</div>
                 </div>
                 <div class="text-black text-[2.8rem] text-right oswald font-[500] uppercase tracking-wider mr-[4rem] mt-[9rem]">
-                    <div class="hover:text-white cursor-pointer">appetizers</div>
-                    <div class="my-[1.5rem] hover:text-white cursor-pointer">entrees</div>
-                    <div class="hover:text-white cursor-pointer">desserts</div>
+                    <div class="hover:text-white cursor-pointer">nigiri sushi</div>
+                    <div class="my-[1.5rem] hover:text-white cursor-pointer">ramen</div>
+                    <div class="hover:text-white cursor-pointer">drinks</div>
                 </div>
 
             </div>

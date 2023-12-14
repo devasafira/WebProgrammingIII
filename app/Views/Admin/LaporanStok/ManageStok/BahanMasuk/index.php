@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
                 <!-- Form Print -->
-                <form method="post" action="/laporan/print" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/printIn" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -31,7 +31,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -54,7 +54,7 @@
             </div>
             <div class="card-body">
                 <!-- Form PDF -->
-                <form method="post" action="/laporan/printpdf" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/printInpdf" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -74,7 +74,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -97,7 +97,7 @@
             </div>
             <div class="card-body">
                 <!-- Form Excel -->
-                <form method="post" action="/laporan/excel" class="flex ml-[1rem] my-[1rem] col">
+                <form method="post" action="/laporan/excelIn" class="flex ml-[1rem] my-[1rem] col">
                     <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
                         <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                             <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -117,7 +117,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -135,25 +135,14 @@
             </div>
         </div>
     </div>
-
-    <!-- MENU FAVORIT -->
-    <div class="my-[1rem]">
-        <div class="card m-auto block" style="width: 80vw;">
-            <div class="card-header text-center poppins font-semibold uppercase tracking-wide">
-                Menu Terfavorit
-            </div>
-            <div class="card-body text-center">
-                <?php $no = 1; ?>
-                <?php foreach ($menuFavorit as $row) {
-                    echo (' ' . $no++ . '.  ');
-                    echo $row['nama_menu'];
-                } ?>
-            </div>
-        </div>
+    <div class="flex">
+        
     </div>
 
-    <!-- Form Filter -->
-    <form method="post" action="/laporan" class="flex ml-[1rem] my-[1rem]">
+    <a href="/tambahMaterials" class="border-[1px] border-black rounded p-[0.3rem] mt-[1rem] float-right mx-[0.5rem] hover:bg-[#202920] hover:text-white">Tambah Laporan Masuk</a>
+
+    <!-- FORM FILTER -->
+    <form method="post" action="/materialsInFilter" class="flex ml-[1rem] my-[1rem]">
         <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
             <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
                 <option value="All" <?= ($selectedMonth === 'All') ? 'selected' : ''; ?>>All Data</option>
@@ -189,7 +178,7 @@
         </div>
     </form>
 
-    <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN PENJUALAN SUSHIGO</h2>
+    <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN BAHAN MASUK SUSHIGO</h2>
 
     <?php if ($selectedMonth !== 'All') : ?>
         <div class="poppins font-semibold ml-[1rem]"> Bulan : <?= $selectedMonth; ?> / <?= $selectedYear; ?></div>
@@ -202,20 +191,19 @@
         <Table class="table montserrat text-center">
             <thead>
                 <tr>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Tanggal</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">No Invoice</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">ID Menu</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Nama Menu</th>
-                    <th scope="col" class="border-[1px] border-black p-[10px]">Jumlah Penjualan</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">No</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Tanggal Barang Masuk</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Nama Bahan</th>
+                    <th scope="col" class="border-[1px] border-black p-[10px]">Jumlah Barang Masuk</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($laporan as $data) : ?>
+                <?php $no = 1; ?>
+                <?php foreach ($barangMasuk as $data) : ?>
                     <tr>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['tanggal_pembelian']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['id']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['id_menu']; ?></td>
-                        <td class="border-[1px] border-black p-[10px]"><?= $data['nama_menu']; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $no++; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $data['tanggal']; ?></td>
+                        <td class="border-[1px] border-black p-[10px]"><?= $data['bahan']; ?></td>
                         <td class="border-[1px] border-black p-[10px]"><?= $data['jumlah']; ?></td>
                     </tr>
                 <?php endforeach; ?>

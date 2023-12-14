@@ -31,7 +31,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -74,7 +74,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -117,7 +117,7 @@
                         <select id="year" name="year" class="border-[1px] w-[4rem] border-black rounded p-[0.2rem]">
                             <?php
                             $selectedYear = isset($year) ? $year : date('Y');
-                            $startYear = date('Y') - 3;
+                            $startYear = date('Y') - 1;
                             $currentYear = (date('Y') - $startYear) + 1;
 
                             for ($i = $startYear; $i < $startYear + $currentYear; $i++) {
@@ -135,9 +135,23 @@
             </div>
         </div>
     </div>
-    <!-- FORM FILTER -->
 
-    <!-- Form Filter -->
+    <div class="my-[1rem]">
+        <div class="card m-auto block" style="width: 80vw;">
+            <div class="card-header text-center poppins font-semibold uppercase tracking-wide">
+                Menu Terfavorit
+            </div>
+            <div class="card-body text-center">
+                <?php $no = 1; ?>
+                <?php foreach ($menuFavorit as $row) {
+                    echo (' ' . $no++ . '.  ');
+                    echo $row['nama_menu'];
+                } ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM FILTER -->
     <form method="post" action="/laporan" class="flex ml-[1rem] my-[1rem]">
         <div class="text-field flex flex-col justify-between gap-y-[0.5rem]">
             <select id="month" name="month" class="border-[1px] w-[7rem] border-black rounded p-[0.2rem]">
@@ -174,20 +188,6 @@
         </div>
     </form>
 
-    <div class="">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                Menu Terfavorit
-            </div>
-            <div class="card-body">
-                <?php foreach ($menuFavorit as $row) {
-                    echo $row->nama_menu;
-                    echo $row->total_pembelian;
-                } ?>
-            </div>
-        </div>
-    </div>
-
     <h2 class="poppins text-center text-[1.6rem] font-semibold">LAPORAN PENJUALAN SUSHIGO</h2>
 
     <?php if ($selectedMonth !== 'All') : ?>
@@ -223,22 +223,5 @@
     </div>
 
 </section>
-
-<script>
-    // JavaScript untuk menambahkan opsi tahun secara dinamis hingga beberapa tahun ke depan
-    document.addEventListener('DOMContentLoaded', function() {
-        var yearSelect = document.getElementById('year');
-        var currentYear = new Date().getFullYear();
-        var endYear = currentYear + 10; // Sesuaikan dengan jumlah tahun yang ingin ditambahkan
-
-        // Tambahkan opsi tahun hingga endYear
-        for (var year = currentYear; year <= endYear; year++) {
-            var option = document.createElement('option');
-            option.value = year;
-            option.text = year;
-            yearSelect.add(option);
-        }
-    });
-</script>
 
 <?= $this->endSection(); ?>

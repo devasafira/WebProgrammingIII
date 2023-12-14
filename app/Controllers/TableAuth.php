@@ -34,8 +34,6 @@ class TableAuth extends BaseController
 
     public function Login()
     {
-
-
         if ($this->request->getMethod() === 'post') {
             // Check if the submitted username exists in your database
             $table_number = $this->request->getPost('table_number');
